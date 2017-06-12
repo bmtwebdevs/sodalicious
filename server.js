@@ -1,6 +1,7 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var mongoose   = require('mongoose');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -12,6 +13,11 @@ var port = process.env.PORT || 8080;        // set our port
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
+
+//var db = mongoose.createConnection('localhost', 'sodalicious');
+
+//var drinkSchema = require('./models/Drink.js').DrinkSchema;
+//var drink = db.model('drinks', drinkSchema);
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
