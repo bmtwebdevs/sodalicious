@@ -4,7 +4,11 @@
   "description": "Control robot drink mixer",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start_react": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,11 @@
     "johnny-five": "^0.11.1",
     "mongoose": "^4.10.5",
     "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.7"
   }
 }
