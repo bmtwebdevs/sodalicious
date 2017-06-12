@@ -19,6 +19,8 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "dotenv-safe": "^4.0.4",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "johnny-five": "^0.11.1",
+    "mongoose": "^4.10.5"
   }
 }
