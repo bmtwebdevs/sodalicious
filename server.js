@@ -8,7 +8,7 @@ var mongoose   = require('mongoose');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // set our port
+var port = process.env.PORT || 3000;        // set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -33,5 +33,5 @@ app.use('/api', router);
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Server started: http://localhost:' + port + '/');
 
