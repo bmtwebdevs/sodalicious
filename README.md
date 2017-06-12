@@ -55,8 +55,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * **Richard Caunt** - for his 3D printer
 * **Jeremy Lintern** - for the name
-* **Conrad Jackson** - for turning up conveniently to take credit
-* **Luke McHale-Jones** - for ordering pizza
+* **Conrad Jackson** - for his amazeballs node.js
+* **Luke McHale-Jones** - for #failing to ordering pizza
 
 ## License
 
