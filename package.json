@@ -1,0 +1,26 @@
+{
+  "name": "sodalicious",
+  "version": "1.0.0",
+  "description": "Control robot drink mixer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmtwebdevs/sodalicious.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmtwebdevs/sodalicious/issues"
+  },
+  "homepage": "https://github.com/bmtwebdevs/sodalicious#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "dotenv-safe": "^4.0.4",
+    "express": "^4.15.3",
+    "johnny-five": "^0.11.1",
+    "mongoose": "^4.10.5"
+  }
+}
