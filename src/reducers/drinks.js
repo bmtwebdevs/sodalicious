@@ -3,7 +3,7 @@ const drinks = (state = new Map(), action) => {
     
     switch(action.type)
     {
-        case : 'ADD_DRINK'
+      case 'ADD_DRINK' :
             //Do something to next state here
             break;
         default: return state;
