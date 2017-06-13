@@ -26,6 +26,7 @@
     "dotenv-safe": "^4.0.4",
     "express": "^4.15.3",
     "history": "^4.6.1",
+    "isotope-layout": "^3.0.4",
     "johnny-five": "^0.11.1",
     "mongoose": "^4.10.5",
     "react": "^15.5.4",
