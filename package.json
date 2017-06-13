@@ -24,11 +24,15 @@
     "body-parser": "^1.17.2",
     "dotenv-safe": "^4.0.4",
     "express": "^4.15.3",
+    "history": "^4.6.1",
     "johnny-five": "^0.11.1",
     "mongoose": "^4.10.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
     "redux": "^3.6.0"
   },
   "devDependencies": {

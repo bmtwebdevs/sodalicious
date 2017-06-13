@@ -1,6 +1,11 @@
 import {combineReducers} from 'redux';
+import { routerReducer } from 'react-router-redux'
 
-const state = combineReducers({    
+import drinks from './drinks';
+
+const state = combineReducers({  
+  drinks,
+  router : routerReducer
 });
 
 export default state;
