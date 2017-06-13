@@ -8,9 +8,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="hero-image">
+          <div className="hero-text">
+            <h1>#Sodalicious</h1>
+            <p>An Alexa controlled smart drinks mixer for the technogeek-connoisseur powered by <b>British Mixology Technology</b></p>
+            <button>Make a drink</button>
+          </div>
         </div>
         <DrinksCatalog />
       </div>
