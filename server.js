@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
