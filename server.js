@@ -1,10 +1,9 @@
 const express = require('express');
-const fs = require('fs');
-const sqlite = require('sql.js');
 
-const filebuffer = fs.readFileSync('db/usda-nnd.sqlite3');
+var db = mongoose.createConnection('localhost', 'sodalicious');
 
-const db = new sqlite.Database(filebuffer);
+var drinkSchema = require('./models/Drink.js').DrinkSchema;
+var drink = db.model('drinks', drinkSchema);
 
 const app = express();
 
