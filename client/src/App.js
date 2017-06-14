@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
 import Hero from './components/hero/hero';
+import DrinkSelector from './components/drinkSelector/drinkSelector';
+import Footer from './components/footer/footer';
 
 class App extends Component {
   state = {
@@ -26,6 +28,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Hero/>
+        <DrinkSelector/>
         <div className='ui text container'>
           <SelectedFoods
             foods={selectedFoods}
@@ -35,6 +38,7 @@ class App extends Component {
             onFoodClick={this.addFood}
           />
         </div>
+        <Footer/>
       </div>
     );
   }
