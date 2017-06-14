@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
 import Hero from './components/hero/hero';
@@ -31,7 +32,7 @@ class Home extends Component {
         <DrinkSelector/>
         <div className='ui text container'>
           <SelectedFoods
-            foods={selectedFoods}
+            foods={this.state.selectedFoods}
             onFoodClick={this.removeFoodItem}
           />
           <FoodSearch
