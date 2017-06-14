@@ -6,7 +6,6 @@ var express = require('express');
 module.exports = (app, Drink) => {
   
   app.get('/drinks', function(req, res) {
-<<<<<<< HEAD
 
     var query = {};
     
@@ -14,11 +13,8 @@ module.exports = (app, Drink) => {
       var regex = new RegExp(req.query.q, 'i');
       query = { name: regex };
     }
-
-    Drink.find(query, function (err, drinks) {
-=======
-    Drink.find({}).sort({name: 'asc'}).exec(function (err, drinks) {
->>>>>>> master
+    
+    Drink.find(query).sort({name: 'asc'}).exec(function (err, drinks) {
       return res.json(drinks);
     });
   });
