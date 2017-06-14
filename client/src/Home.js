@@ -6,6 +6,8 @@ import Hero from './components/hero/hero';
 import DrinkSelector from './components/drinkSelector/drinkSelector';
 import Footer from './components/footer/footer';
 
+import Pump from './clients/Pump';
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 class Home extends Component {
@@ -25,6 +27,18 @@ class Home extends Component {
     this.setState({ selectedFoods: newFoods });
   }
 
+  pumpOn = () => {
+    Pump.on(0, (result) => {
+        
+    });
+  }
+
+  pumpOff = () => {
+    Pump.off(0, (result) => {
+        
+    });
+  }
+
   render() {
     return (
       <div className='Home'>
@@ -38,6 +52,9 @@ class Home extends Component {
           <FoodSearch
             onFoodClick={this.addFood}
           />
+          
+          <button onClick={this.pumpOn} title="Pump On">On</button>
+          <button onClick={this.pumpOff} title="Pump Off">Off</button>
         </div>
         <Footer/>
       </div>
