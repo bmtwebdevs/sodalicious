@@ -74,7 +74,7 @@ class DrinkSelector extends Component {
     var path = drink.image ? 'url(drink_images/' + drink.image + ')' : null;
 
     return (
-      <li className={this.state.drink == drink._id ? 'Drink activeDrink' : 'Drink'} key={drink._id}>
+      <li className={this.state.drink === drink._id ? 'Drink activeDrink' : 'Drink'} key={drink._id}>
         <div className="drinkImage" style={{backgroundImage: path}} onClick={this.pickDrink.bind(this)} id={drink._id}>
           <span className="drinkName">{drink.name}</span>
           </div>
@@ -92,26 +92,35 @@ class DrinkSelector extends Component {
 
     return (
       <div>
+        <div className="bar"><h2>Drink</h2></div>
+        <div className="buttons">
+        <div className="ui input focus">
+          
       <input className='prompt'
                       type='text'
                       placeholder='Search drinks...'
                       value={this.state.searchValue}
                       onChange={this.handleSearchChange}
                     />
-                    
+        </div>
+               </div>     
       <div className="Drinks">
         <ul>
           {listItems}
         </ul>
         <div style={{clear: "both"}} />
       </div>
-      <button onClick={this.pickSize.bind(this)} className={this.state.size == 20 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="20">20</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size == 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">100</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size == 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">200</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size == 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">300</button>
+
+      <div className="bar"><h2>Drink Size</h2></div>
+      <div className="buttons">
+      <button onClick={this.pickSize.bind(this)} className={this.state.size === 20 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="20">Shot</button>&nbsp;
+      <button onClick={this.pickSize.bind(this)} className={this.state.size === 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">Small</button>&nbsp;
+      <button onClick={this.pickSize.bind(this)} className={this.state.size === 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">Medium</button>&nbsp;
+      <button onClick={this.pickSize.bind(this)} className={this.state.size === 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">Large</button>
       <br /><br />
       <button onClick={this.makeDrink.bind(this)} className={this.state.canMake ? 'btn btn-lg btn-success' : 'btn btn-lg btn-default'}>Make Drink</button>
       <br /><br />
+      </div>
       </div>
     );
   }

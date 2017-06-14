@@ -2,9 +2,11 @@ var pump0, pump1, pump2, pump3, pump4;
 
 var five = require('johnny-five');
 
-console.log("Bartender Waking Up".green);
-
 try {
+  if (process.env.BAR !== 'NO') {
+
+  console.log("Bartender Waking Up".green);
+
   var board = new five.Board({port:'COM5', repl: false});
   
   board.on('ready', function() {
@@ -33,7 +35,7 @@ try {
     console.log("Ooops", err);
     return;
   });
-
+  }
 } catch(err) {
   console.log('Bartender not initialised. Is it plugged in?', err);
 }
