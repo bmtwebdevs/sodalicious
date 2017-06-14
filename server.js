@@ -5,6 +5,8 @@ var publicRoutes = require('./routes/public');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
+var port = process.env.PORT || 3000;        // set our port
+
 var drinkSchema = require('./models/Drink.js').DrinkSchema;
 var drink = db.model('drinks', drinkSchema);
 
@@ -33,6 +35,10 @@ const COLUMNS = [
 // Routes
 app.use('/', publicRoutes);
 
+// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
+router.get('/public/', function(req, res) {
+    res.sendfile('index.html')   
+});
 
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
