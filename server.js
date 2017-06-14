@@ -1,37 +1,60 @@
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');
+
+import express from 'express'
+import path from 'path'
+import compression from 'compression'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { match, RouterContext } from 'react-router'
+import routes from './modules/routes'
+
+/*
 var mongoose   = require('mongoose');
+var colors     = require('colors');
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+var db = mongoose.createConnection('localhost', 'sodalicious');
 
-var port = process.env.PORT || 8080;        // set our port
+var drinkSchema = require('./models/Drink.js').DrinkSchema;
+var drink = db.model('drinks', drinkSchema);
 
-// ROUTES FOR OUR API
-// =============================================================================
-var router = express.Router();              // get an instance of the express Router
+var bartender = require('./bartender.js');*/
 
-//var db = mongoose.createConnection('localhost', 'sodalicious');
+var app = express();
 
-//var drinkSchema = require('./models/Drink.js').DrinkSchema;
-//var drink = db.model('drinks', drinkSchema);
+app.use(compression());
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
-});
+// serve our static stuff like index.css
+app.use(express.static(path.join(__dirname, 'public'), {index: false}));
 
-// more routes for our API will happen here
+// send all requests to index.html so browserHistory works
+app.get('*', (req, res) => {
+  match({ routes, location: req.url }, (err, redirect, props) => {
+    if (err) {
+      res.status(500).send(err.message)
+    } else if (redirect) {
+      res.redirect(redirect.pathname + redirect.search)
+    } else if (props) {
+      // hey we made it!
+      const appHtml = renderToString(<RouterContext {...props}/>)
+      res.send(renderPage(appHtml))
+    } else {
+      res.status(404).send('Not Found')
+    }
+  })
+})
 
-// REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
-app.use('/api', router);
+function renderPage(appHtml) {
+  return `
+    <!doctype html public="storage">
+    <html>
+    <meta charset=utf-8/>
+    <title>My First React Router App</title>
+    <link rel=stylesheet href=/index.css>
+    <div id=app>${appHtml}</div>
+    <script src="/bundle.js"></script>
+   `
+}
 
-// START THE SERVER
-// =============================================================================
-app.listen(port);
-console.log('Magic happens on port ' + port);
-
+var PORT = process.env.PORT || 8080
+app.listen(PORT, function() {
+  console.log('Production Express server running at localhost:' + PORT)
+})
