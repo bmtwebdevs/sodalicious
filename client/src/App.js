@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
+import Hero from './components/hero/hero';
 
 class App extends Component {
   state = {
@@ -24,6 +25,7 @@ class App extends Component {
 
     return (
       <div className='App'>
+        <Hero/>
         <div className='ui text container'>
           <SelectedFoods
             foods={selectedFoods}
