@@ -5,13 +5,15 @@ import DrinkClient from '../../clients/Drink' ;
 
 import './style.css';
 
+var jquery = require("jquery");
+
 class DrinkSelector extends Component {
   state = {
     drinks: [],
     searchValue: '',
     drink: '',
-    size: 100,
-    canMake: false
+    drinkName: '',
+    size: 0
   }
 
   componentDidMount() {
@@ -36,32 +38,33 @@ class DrinkSelector extends Component {
       });
   }
 
-  pickDrink(event) {
+  pickDrink(id, name) {
     this.setState({
-      drink: event.target.id
+      drink: id,
+      drinkName: name
     });
 
-    this.updateCanMake();
+    setTimeout(function() {
+      var scrollTo = jquery('#sizeBar')
+      
+      jquery('html,body').animate({scrollTop: scrollTo.offset().top});
+    }, 200);
   }
 
-  updateCanMake() {
-    if (this.state.drink.length > 0 && this.state.size > 0) {
-      this.setState({
-        canMake: true
-      });
-    }else {
-      this.setState({
-        canMake: false
-      });
-    }
-  };
+  canMake() {
+    return (this.state.drink.length > 0 && this.state.size > 0);
+  }
 
-  pickSize(event) {
+  pickSize(size) {
     this.setState({
-      size: event.target.id
+      size: size
     });
 
-    this.updateCanMake();
+    setTimeout(function() {
+      var scrollTo = jquery('#makeBar')
+      
+      jquery('html,body').animate({scrollTop: scrollTo.offset().top});
+    }, 200);
   }
 
   makeDrink(event) {
@@ -75,7 +78,7 @@ class DrinkSelector extends Component {
 
     return (
       <li className={this.state.drink === drink._id ? 'Drink activeDrink' : 'Drink'} key={drink._id}>
-        <div className="drinkImage" style={{backgroundImage: path}} onClick={this.pickDrink.bind(this)} id={drink._id}>
+        <div className="drinkImage" style={{backgroundImage: path}} onClick={() => this.pickDrink(drink._id, drink.name)} id={drink._id}>
           <span className="drinkName">{drink.name}</span>
           </div>
       </li>
@@ -90,20 +93,38 @@ class DrinkSelector extends Component {
     this.newDrink(drink)
   );
 
+  var message = '"Yo bartender!"';
+
+  if (this.canMake()) {
+      var sizeQ = '';
+      switch (this.state.size) {
+        case 20:
+          sizeQ = 'shot of ';
+          break;
+          case 100:
+          sizeQ = 'small ';
+          break;
+          case 200:
+          sizeQ = 'regular ';
+          break;
+          case 300:
+          sizeQ = 'large ';
+          break;
+      }
+      message = "\"Yo bartender! Ill have a " + sizeQ + this.state.drinkName + " please!\"";
+  }
+
     return (
       <div>
-        <div className="bar"><h2>Drink</h2></div>
-        <div className="buttons">
-        <div className="ui input focus">
-          
-      <input className='prompt'
-                      type='text'
-                      placeholder='Search drinks...'
-                      value={this.state.searchValue}
-                      onChange={this.handleSearchChange}
-                    />
+        <div className="bar">
+          <div className="barInner">
+            <h2>Choose your drink...</h2>
+            <div className="ui input focus search">
+                <input className='prompt' type='text' placeholder='Search drinks...' value={this.state.searchValue} onChange={this.handleSearchChange} />
+            </div>
+          </div>
         </div>
-               </div>     
+
       <div className="Drinks">
         <ul>
           {listItems}
@@ -111,16 +132,27 @@ class DrinkSelector extends Component {
         <div style={{clear: "both"}} />
       </div>
 
-      <div className="bar"><h2>Drink Size</h2></div>
-      <div className="buttons">
-      <button onClick={this.pickSize.bind(this)} className={this.state.size === 20 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="20">Shot</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size === 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">Small</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size === 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">Medium</button>&nbsp;
-      <button onClick={this.pickSize.bind(this)} className={this.state.size === 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">Large</button>
-      <br /><br />
-      <button onClick={this.makeDrink.bind(this)} className={this.state.canMake ? 'btn btn-lg btn-success' : 'btn btn-lg btn-default'}>Make Drink</button>
-      <br /><br />
+      <div id="sizeBar" style={{display: this.state.drink.length > 0 ? 'block' : 'none'}}>
+        <div className="bar"><div className="barInner"><h2>Choose the size...</h2></div></div>
+        <div className="buttons">
+          <button onClick={() => this.pickSize(20)} className={this.state.size === 20 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="20">Shot</button>&nbsp;
+          <button onClick={() => this.pickSize(100)} className={this.state.size === 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">Small</button>&nbsp;
+          <button onClick={() => this.pickSize(200)} className={this.state.size === 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">Medium</button>&nbsp;
+          <button onClick={() => this.pickSize(300)} className={this.state.size === 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">Large</button>
+          <br /><br />
+        </div>
       </div>
+
+      <div id="makeBar" style={{display: this.state.drink.length > 0 && this.state.size > 0 ? 'block' : 'none'}}>
+        <div className="buttons">
+          <br />
+          <h1><i>{message}</i></h1>
+          <br /><br />
+          <button onClick={() => this.makeDrink()} className="btn btn-lg btn-success">Make Drink</button>
+          <br /><br />
+        </div>
+      </div>
+
       </div>
     );
   }
