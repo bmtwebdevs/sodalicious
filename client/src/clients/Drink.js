@@ -25,6 +25,15 @@ function remove(id, cb) {
     .then(cb);
 };
 
+function make(drink, size, cb) {
+
+return fetch(`bartender?id=${drink}&size=${size}`, {
+    accept: 'application/json',
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -40,6 +49,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { search, remove };
+const Client = { search, remove, make };
 
 export default Client;

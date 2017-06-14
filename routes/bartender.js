@@ -14,14 +14,14 @@ module.exports = (app, Bartender, Drink) => {
 
       } else {
 
-        console.log("drink");
+        //console.log("drink");
         //console.log(drink);
 
         var pumps = [];
         pumps['pump0'] = 'Vodka';
         pumps['pump1'] = 'Rum';
-        pumps['pump2'] = 'Sweet & Sour';
-        pumps['pump3'] = 'Blue Liquer';
+        pumps['pump2'] = 'Sprite';
+        pumps['pump3'] = 'Orange Juice';
         pumps['pump4'] = 'Gin';
         
         var ingredients = [];
@@ -39,12 +39,12 @@ module.exports = (app, Bartender, Drink) => {
         var size = req.query.size || 10;
         
         for (var ingredient of drink.ingredients) {
-            console.log('IN:')
-            console.log(ingredient);
+            //console.log('IN:')
+            //console.log(ingredient);
 
             for (var pump in pumps) {
-                console.log("PUMP:");
-                console.log(pump);
+                //console.log("PUMP:");
+                //console.log(pump);
 
                 if (pumps[pump] === ingredient.name) {
                     console.log("using: " + pump);
@@ -52,6 +52,9 @@ module.exports = (app, Bartender, Drink) => {
                     var iSize = (ingredient.amount / parts) * size;
 
                     var iDelay = ((biggest - ingredient.amount) / parts) * size;
+
+                    console.log('Amount: ' + iSize);
+                    console.log('Delay: ' + iDelay);
 
                     ingredients.push({
                         pump: pump,
