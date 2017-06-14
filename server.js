@@ -33,7 +33,7 @@ const COLUMNS = [
  * Route initialization.
  */
 // Routes
-//app.use('/', publicRoutes);
+app.use('/', publicRoutes);
 
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
