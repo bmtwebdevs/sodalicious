@@ -19,6 +19,17 @@ module.exports = (app, Drink) => {
     });
   });
 
+  app.del('/drink', function(req, res) {
+    Drink.findOneAndRemove({_id: req.body.id}, function(err, drink) {
+      if(err) {
+        return res.json({success:false, error: err});
+      } else {
+        return res.json({success:true});
+      }
+      
+    });
+  });
+
   app.post('/drink', function(req, res) {
     //var drink = new Drink(req.body);
     var drink = { name: req.body.name, description: req.body.description, ingredients: req.body.ingredients, image: req.body.image };
