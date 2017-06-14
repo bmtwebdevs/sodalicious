@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import '../semantic/dist/semantic.min.css';
+
 import Admin from './Admin'
 import Home from './Home'
+
 
 import NotFound from './NotFound'
 
