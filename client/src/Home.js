@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
+import Hero from './components/hero/hero';
+import DrinkSelector from './components/drinkSelector/drinkSelector';
+import Footer from './components/footer/footer';
+
+import 'bootstrap/dist/css/bootstrap.css'
 
 class Home extends Component {
   state = {
@@ -20,10 +25,10 @@ class Home extends Component {
   }
 
   render() {
-    const { selectedFoods } = this.state;
-
     return (
       <div className='Home'>
+        <Hero/>
+        <DrinkSelector/>
         <div className='ui text container'>
           <SelectedFoods
             foods={selectedFoods}
@@ -33,6 +38,7 @@ class Home extends Component {
             onFoodClick={this.addFood}
           />
         </div>
+        <Footer/>
       </div>
     );
   }
