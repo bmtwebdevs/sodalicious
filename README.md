@@ -15,8 +15,17 @@ git clone https://github.com/bmtwebdevs/sodalicious.git
 Open a command prompt, navigate to the project directory and run the following command
 
 ```
-node server.js
+npm start
 ```
+
+To start both the client and the server.  If you don't have Arduino connected then run:
+
+```
+set BAR=false
+npm start
+```
+
+Which will prevent the bartender from waking up.
 
 ### Prerequisites
 
@@ -33,6 +42,8 @@ Install the latest version of node from https://nodejs.org/en/
 Open a command prompt, navigate to the project directory and run the following command to install all of the development packages.
 
 ```
+npm install
+cd client
 npm install
 ```
 
