@@ -6,7 +6,15 @@ var express = require('express');
 module.exports = (app, Drink) => {
   
   app.get('/drinks', function(req, res) {
-    Drink.find({}, function (err, drinks) {
+
+    var query = {};
+    
+    if(req.query.q) {
+      var regex = new RegExp(req.query.q, 'i');
+      query = { name: regex };
+    }
+
+    Drink.find(query, function (err, drinks) {
       return res.json(drinks);
     });
   });
