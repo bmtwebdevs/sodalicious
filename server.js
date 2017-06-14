@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-var publicRoutes = require('./routes/public');
+//var publicRoutes = require('./routes/public');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
@@ -33,12 +33,7 @@ const COLUMNS = [
  * Route initialization.
  */
 // Routes
-app.use('/', publicRoutes);
-
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/public/', function(req, res) {
-    res.sendfile('index.html')   
-});
+//app.use('/', publicRoutes);
 
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
