@@ -54,7 +54,7 @@ class FoodSearch extends React.Component {
         onClick={() => this.props.onFoodClick(food)}
       >
         <td>{food.description}</td>
-        <td className='right aligned'>{food.kcal}</td>
+        <td className='right aligned'>{food.name}</td>
         <td className='right aligned'>{food.protein_g}</td>
         <td className='right aligned'>{food.fat_g}</td>
         <td className='right aligned'>{food.carbohydrate_g}</td>
