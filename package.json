@@ -2,13 +2,13 @@
   "name": "sodalicious",
   "version": "1.0.0",
   "description": "Control robot drink mixer",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start_node": "node server.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "babel-node server.js",
+    "client": "babel-node start-client.js",
+    "dev": "echo \"This command has been deprecated. Use 'npm start'\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,24 +21,19 @@
   },
   "homepage": "https://github.com/bmtwebdevs/sodalicious#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "bootstrap": "^3.3.7",
-    "dotenv-safe": "^4.0.4",
-    "express": "^4.15.3",
-    "history": "^4.6.1",
-    "isotope-layout": "^3.0.4",
     "johnny-five": "^0.11.1",
     "mongoose": "^4.10.5",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.5",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "react-router-redux": "^5.0.0-alpha.6",
-    "redux": "^3.6.0"
+    "babel-cli": "6.14.0",
+    "babel-core": "6.14.0",
+    "express": "4.13.3"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7",
-    "webpack": "^2.6.1"
+    "concurrently": "3.1.0",
+    "eslint": "3.15.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.9.0",
+    "babel-eslint":"7.2.3"
   }
 }
