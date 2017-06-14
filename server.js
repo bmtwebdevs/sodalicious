@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-var publicRoutes = require('./routes/public');
+//var publicRoutes = require('./routes/public');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
+
+var port = process.env.PORT || 3000;        // set our port
 
 var drinkSchema = require('./models/Drink.js').DrinkSchema;
 var drink = db.model('drinks', drinkSchema);
