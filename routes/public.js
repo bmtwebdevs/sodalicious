@@ -11,5 +11,8 @@ router.use(bodyParser.json());
 
 // Routes
 router.get('/drinks', function(req, res) {
-  return res.json();
+  return res.json([{id:1, drink: 'bloody mary'}, {id:2, drink: 'margarita'}]);
 });
+
+// Exports
+module.exports = router;
