@@ -9,7 +9,7 @@ function on(pump, cb) {
         },
         method: 'post',
         body: JSON.stringify({
-        pump: pump
+            pump: pump
         })
     })
     .then(checkStatus)
@@ -26,7 +26,7 @@ function off(pump, cb) {
         },
         method: 'post',
         body: JSON.stringify({
-        pump: pump
+            pump: pump
         })
     })
     .then(checkStatus)

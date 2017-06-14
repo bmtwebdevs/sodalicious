@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import SelectedFoods from './SelectedFoods';
 import FoodSearch from './FoodSearch';
-import Hero from './components/hero/hero';
-import DrinkSelector from './components/drinkSelector/drinkSelector';
-import Footer from './components/footer/footer';
+import Hero from './components/hero';
+import DrinkSelector from './components/drinkSelector';
+import Footer from './components/footer';
 
 import Pump from './clients/Pump';
 
@@ -45,13 +45,6 @@ class Home extends Component {
         <Hero/>
         <DrinkSelector/>
         <div className='ui text container'>
-          <SelectedFoods
-            foods={this.state.selectedFoods}
-            onFoodClick={this.removeFoodItem}
-          />
-          <FoodSearch
-            onFoodClick={this.addFood}
-          />
           
           <button onClick={this.pumpOn} title="Pump On">On</button>
           <button onClick={this.pumpOff} title="Pump Off">Off</button>

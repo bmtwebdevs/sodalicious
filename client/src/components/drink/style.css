@@ -1,0 +1,9 @@
+.Drink {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-color: #cccccc;
+    float: left;
+    margin: 0 0 20px 20px;
+    padding: 10px;
+}
