@@ -8,7 +8,7 @@ class Drink extends Component {
     return (
       <li className="Drink">
         <h3 className="name">{this.props.name}</h3>
-        
+        <img className="photo" src={this.props.image} />
         <span className="description">{this.props.description}</span>
       </li>
     );

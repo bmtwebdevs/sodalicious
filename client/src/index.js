@@ -12,7 +12,7 @@ import Home from './Home'
 
 import NotFound from './NotFound'
 
-import { BrowserRouter, Route, IndexRoute, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 ReactDOM.render((
     <BrowserRouter>
