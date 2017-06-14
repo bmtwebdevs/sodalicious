@@ -1,5 +1,5 @@
 var pump0, pump1, pump2, pump3, pump4;
-/*
+
 var five = require('johnny-five');
 
 console.log("Bartender Waking Up".green);
@@ -16,7 +16,7 @@ board.on('ready', function() {
 
     console.log('Bartender Ready'.green);
 });
-*/
+
 
 exports.pump = function(ingredients) {
     console.log('Making drink...'.blue);

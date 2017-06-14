@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 function search(query, cb) {
   return fetch(`drinks?q=${query}`, {
     accept: 'application/json',
@@ -23,4 +24,5 @@ function parseJSON(response) {
 }
 
 const Client = { search };
+
 export default Client;
