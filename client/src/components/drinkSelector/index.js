@@ -25,23 +25,12 @@ class DrinkSelector extends Component {
     this.setState({
       searchValue: value,
     });
-
-    if (value === '') {
-      this.setState({
-        foods: [],
-        showRemoveIcon: false,
-      });
-    } else {
-      this.setState({
-        showRemoveIcon: true,
-      });
-
-      Client.search(value, (drinks) => {
+    
+    Client.search(value, (drinks) => {
         this.setState({
           drinks: drinks
         });
       });
-    }
   }
 
   render() {

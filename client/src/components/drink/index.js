@@ -5,11 +5,13 @@ import './style.css';
 class Drink extends Component {
 
   render() {
+    var path = this.props.image ? 'url(drink_images/' + this.props.image + ')' : null;
+
     return (
       <li className="Drink">
-        <h3 className="name">{this.props.name}</h3>
-        <img className="photo" src={this.props.image} />
-        <span className="description">{this.props.description}</span>
+        <div className="drinkImage" style={{backgroundImage: path}}>
+          <span className="drinkName">{this.props.name}</span>
+          </div>
       </li>
     );
   }

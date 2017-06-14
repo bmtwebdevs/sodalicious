@@ -1,12 +1,10 @@
 .Hero {
   text-align: center;
   height: 100%;
-  background-color: #d9534f;
 }
 
 .jumbotron {
-    background-image: url("../../resources/Hero.jpg");
-    background-color: #d9534f;
+   /* background-image: url("../../resources/Hero.jpg");*/
     margin-bottom: 0;
     min-height: 100%;
     background-repeat: no-repeat;
