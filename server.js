@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+var publicRoutes = require('./routes/public');
+
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
 var drinkSchema = require('./models/Drink.js').DrinkSchema;
@@ -24,6 +26,14 @@ const COLUMNS = [
   'kcal',
   'description',
 ];
+
+/**
+ * Route initialization.
+ */
+// Routes
+app.use('/', publicRoutes);
+
+
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
 
