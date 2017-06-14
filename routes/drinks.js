@@ -6,7 +6,7 @@ var express = require('express');
 module.exports = (app, Drink) => {
   
   app.get('/drinks', function(req, res) {
-    Drink.find({}, function (err, drinks) {
+    Drink.find({}).sort({name: 'asc'}).exec(function (err, drinks) {
       return res.json(drinks);
     });
   });
