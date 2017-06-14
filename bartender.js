@@ -3,27 +3,27 @@ var pump0, pump1, pump2, pump3, pump4;
 var five = require('johnny-five');
 
 console.log("Bartender Waking Up".green);
-/*
-var board = new five.Board();
+
+var board = new five.Board({port:'COM5', repl: false});
 
 board.on('ready', function() {
     
-    pump0 = new five.Led(0);
-    pump1 = new five.Led(1);
-    pump2 = new five.Led(2);
-    pump3 = new five.Led(3);
-    pump4 = new five.Led(4);
-
+    pump0 = new five.Led(3);
+    pump1 = new five.Led(4);
+    pump2 = new five.Led(5);
+    pump3 = new five.Led(6);
+    pump4 = new five.Led(7);
+/*
     board.repl.inject({
         p0: pump0,
         p1: pump1,
         p2: pump2,
         p3: pump3,
         p4: pump4
-    });
+    });*/
 
     console.log('Bartender Ready'.green);
-});*/
+});
 
 exports.pump = function(ingredients) {
     console.log('Making drink...'.blue);
