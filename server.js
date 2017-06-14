@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const colors = require('colors');
 
 const bodyParser = require('body-parser');
 
+const bartender = require('./bartender');
+
 var drinkRoutes = require('./routes/drinks');
+var pumpRoutes = require('./routes/pumps');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
@@ -28,6 +32,8 @@ app.use(bodyParser.json());
  */
 // Routes
 drinkRoutes(app, Drink);
+
+pumpRoutes(app, bartender);
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
