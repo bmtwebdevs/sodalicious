@@ -12,10 +12,11 @@ module.exports = (app, Drink) => {
   });
 
   app.post('/drink', function(req, res) {
-    var drink = new Drink(req.body);
+    //var drink = new Drink(req.body);
+    var drink = { name: req.body.name, description: req.body.description, ingredients: req.body.ingredients};
     // update the drink if the name is in the db
     var query = { name: drink.name };
-    delete drink._id;
+    
     Drink.findOneAndUpdate(query, drink, {upsert:true}, function(err, drink) {
         if (drink) {
           console.log("Update Drink");
