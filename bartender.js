@@ -4,18 +4,39 @@ var five = require('johnny-five');
 
 console.log("Bartender Waking Up".green);
 
-var board = new five.Board({port:'COM5', repl: false});
+try {
+  var board = new five.Board({port:'COM5', repl: false});
+  
+  board.on('ready', function() {
+      pump0 = new five.Led(3);
+      pump1 = new five.Led(4);
+      pump2 = new five.Led(5);
+      pump3 = new five.Led(6);
+      pump4 = new five.Led(7);
 
-board.on('ready', function() {
-    
-    pump0 = new five.Led(3);
-    pump1 = new five.Led(4);
-    pump2 = new five.Led(5);
-    pump3 = new five.Led(6);
-    pump4 = new five.Led(7);
+      console.log('Bartender Ready'.green);
+  });
 
-    console.log('Bartender Ready'.green);
-});
+  board.on("fail", function(event) {
+    /*
+      Event {
+        type: "info"|"warn"|"fail",
+        timestamp: Time of event in milliseconds,
+        class: name of relevant component class,
+        message: message [+ ...detail]
+      }
+    */
+    console.log("%s sent a 'fail' message: %s", event.class, event.message);
+  });
+
+  board.on('error', function(err) {
+    console.log("Ooops", err);
+    return;
+  });
+
+} catch(err) {
+  console.log('Bartender not initialised. Is it plugged in?', err);
+}
 
 
 exports.pump = function(ingredients) {
