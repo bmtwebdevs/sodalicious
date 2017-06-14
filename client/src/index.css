@@ -16,11 +16,11 @@ body {
   margin-top: 5em;
 }
 
-h2 {
+.barInner {
   text-align: left !important;
   margin-bottom: 20px !important;
-  width:80%;
-  background-color: #efefef;
+  width:95%;
+  background-color: rgb(245,245,245);
   padding: 10px !important;
   display: inline-block !important;
   border-bottom: 3px solid #f26d6a;
@@ -29,6 +29,15 @@ h2 {
 
 .bar {
   width: 100%;
+}
+
+.barInner h2 {
+  display: inline-block !important;
+  margin-bottom: 0 !important;
+}
+
+.barInner .search {
+  float:right;
 }
 
 .buttons {
