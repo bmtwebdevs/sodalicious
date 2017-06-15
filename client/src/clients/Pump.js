@@ -1,8 +1,30 @@
 /* eslint-disable no-undef */
 
+function search(query, cb) {
+  return fetch(`/api/pump?q=${query}`, {
+    accept: 'application/json',
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
+
+function upsert(pump, cb) {
+
+  return fetch('/api/pump/', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ pump })
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+}
+
 function on(pump, cb) {
   
-    return fetch('pump/on', {
+    return fetch('/api/pump/on', {
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -19,7 +41,7 @@ function on(pump, cb) {
 
 function off(pump, cb) {
   
-    return fetch('pump/off', {
+    return fetch('/api/pump/off', {
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -49,6 +71,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Pump = { on, off };
+const Pump = { search, upsert, on, off };
 
 export default Pump;
