@@ -6,8 +6,8 @@ import '../semantic/dist/semantic.min.css';
 
 import './components/drink/style.css';
 
-import Admin from './Admin'
-import Home from './Home'
+import Admin from './components/admin';
+import Home from './components/home';
 
 
 import NotFound from './NotFound'

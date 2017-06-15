@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Drink from '../drink';
 import DrinkClient from '../../clients/Drink' ;
 
 import './style.css';
@@ -16,114 +15,114 @@ class DrinkSelector extends Component {
     size: 0
   }
 
-  componentDidMount() {
-    DrinkClient.search('', (drinks) => {
-        this.setState({
-          drinks: drinks
-        });
-      });
-  }
-
-  handleSearchChange = (e) => {
-    const value = e.target.value;
-
+componentDidMount() {
+  DrinkClient.search('', (drinks) => {
     this.setState({
-      searchValue: value,
+      drinks: drinks
     });
-    
-    DrinkClient.search(value, (drinks) => {
-        this.setState({
-          drinks: drinks
-        });
-      });
-  }
+  });
+}
 
-  pickDrink(id, name) {
+handleSearchChange = (e) => {
+  const value = e.target.value;
+
+  this.setState({
+    searchValue: value,
+  });
+
+  DrinkClient.search(value, (drinks) => {
     this.setState({
-      drink: id,
-      drinkName: name
+      drinks: drinks
     });
+  });
+}
 
-    setTimeout(function() {
-      var scrollTo = jquery('#sizeBar')
-      
-      jquery('html,body').animate({scrollTop: scrollTo.offset().top});
-    }, 200);
+pickDrink(id, name) {
+  this.setState({
+    drink: id,
+    drinkName: name
+  });
+
+  setTimeout(function() {
+    var scrollTo = jquery('#sizeBar')
+
+    jquery('html,body').animate({scrollTop: scrollTo.offset().top});
+  }, 200);
+}
+
+canMake() {
+  return (this.state.drink.length > 0 && this.state.size > 0);
+}
+
+pickSize(size) {
+  this.setState({
+    size: size
+  });
+
+  setTimeout(function() {
+    var scrollTo = jquery('#makeBar')
+
+    jquery('html,body').animate({scrollTop: scrollTo.offset().top});
+  }, 200);
+}
+
+makeDrink(event) {
+  if (this.state.drink.length > 0 && this.state.size > 0) {
+    DrinkClient.make(this.state.drink, this.state.size);
   }
+}
 
-  canMake() {
-    return (this.state.drink.length > 0 && this.state.size > 0);
-  }
+newDrink(drink) {
+  var path = drink.image ? 'url(drink_images/' + drink.image + ')' : null;
 
-  pickSize(size) {
-    this.setState({
-      size: size
-    });
+  return (
+    <li className={this.state.drink === drink._id ? 'Drink activeDrink' : 'Drink'} key={drink._id}>
+      <div className="drinkImage" style={{backgroundImage: path}} onClick={() => this.pickDrink(drink._id, drink.name)} id={drink._id}>
+        <span className="drinkName">{drink.name}</span>
+      </div>
+    </li>
+  );
+}
 
-    setTimeout(function() {
-      var scrollTo = jquery('#makeBar')
-      
-      jquery('html,body').animate({scrollTop: scrollTo.offset().top});
-    }, 200);
-  }
-
-  makeDrink(event) {
-    if (this.state.drink.length > 0 && this.state.size > 0) {
-      DrinkClient.make(this.state.drink, this.state.size);
-    }
-  }
-
-  newDrink(drink) {
-    var path = drink.image ? 'url(drink_images/' + drink.image + ')' : null;
-
-    return (
-      <li className={this.state.drink === drink._id ? 'Drink activeDrink' : 'Drink'} key={drink._id}>
-        <div className="drinkImage" style={{backgroundImage: path}} onClick={() => this.pickDrink(drink._id, drink.name)} id={drink._id}>
-          <span className="drinkName">{drink.name}</span>
-          </div>
-      </li>
-    );
-  }
-
-  render() {
-    const { drinks } = this.state;
+render() {
+  const { drinks } = this.state;
 
   const listItems = drinks.map((drink, index) =>
-    // Correct! Key should be specified inside the array.
-    this.newDrink(drink)
-  );
+                               // Correct! Key should be specified inside the array.
+                               this.newDrink(drink)
+                              );
 
   var message = '"Yo bartender!"';
 
   if (this.canMake()) {
-      var sizeQ = '';
-      switch (this.state.size) {
-        case 20:
-          sizeQ = 'shot of ';
-          break;
-          case 100:
-          sizeQ = 'small ';
-          break;
-          case 200:
-          sizeQ = 'regular ';
-          break;
-          case 300:
-          sizeQ = 'large ';
-          break;
-      }
-      message = "\"Yo bartender! Ill have a " + sizeQ + this.state.drinkName + " please!\"";
+    var sizeQ = '';
+    switch (this.state.size) {
+      case 20:
+        sizeQ = 'shot of ';
+        break;
+      case 100:
+        sizeQ = 'small ';
+        break;
+      case 300:
+        sizeQ = 'large ';
+        break;
+      case 200:
+      default:
+        sizeQ = 'regular ';
+                           }
+    message = "\"Yo bartender! Ill have a " + sizeQ + this.state.drinkName + " please!\"";
   }
 
-    return (
-      <div>
-        <div className="bar">
-          <div className="barInner">
-            <h2>Choose your drink...</h2>
-            <div className="ui input focus search">
-                <input className='prompt' type='text' placeholder='Search drinks...' value={this.state.searchValue} onChange={this.handleSearchChange} />
-            </div>
+  return (
+    <div>
+      <div className="bar">
+        <div className="barInner">
+          <h2>Choose your drink...</h2>
+          <div className="ui input focus search">
+            <input className='prompt' type='text' placeholder='Search drinks...' value={this.state.searchValue} onChange={this.handleSearchChange} />
           </div>
         </div>
+      </div>
 
       <div className="Drinks">
         <ul>
@@ -153,9 +152,9 @@ class DrinkSelector extends Component {
         </div>
       </div>
 
-      </div>
-    );
-  }
+    </div>
+  );
+}
 }
 
 export default DrinkSelector;

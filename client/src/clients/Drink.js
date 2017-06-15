@@ -9,25 +9,39 @@ function search(query, cb) {
 };
 
 function remove(id, cb) {
-  
+
   return fetch('drink', {
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-        method: 'delete',
-        body: JSON.stringify({
-            id: id
-        })
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'delete',
+    body: JSON.stringify({
+      id: id
     })
-    .then(checkStatus)
+  }).then(checkStatus)
     .then(parseJSON)
     .then(cb);
 };
 
+function upsert(drink, cb) {
+
+  return fetch('drink', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ drink })
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+}
+
+
 function make(drink, size, cb) {
 
-return fetch(`bartender?id=${drink}&size=${size}`, {
+  return fetch(`bartender?id=${drink}&size=${size}`, {
     accept: 'application/json',
   }).then(checkStatus)
     .then(parseJSON)
@@ -49,6 +63,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { search, remove, make };
+const Client = { search, remove, upsert, make };
 
 export default Client;
