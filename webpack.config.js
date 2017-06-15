@@ -12,7 +12,11 @@ var common = {
   debug: true,
   entry: './src/script/index.jsx',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'masonry': 'masonry-layout',
+      'isotope': 'isotope-layout'
+    }
   },
   output: {
     filename: 'index.js',
@@ -41,6 +45,9 @@ var common = {
     }, {
       test: /\.(eot|ttf|svg|gif|png)$/,
       loader: "file-loader"
+    },{
+      test: /masonry-layout/,
+      loader: 'imports?define=>false&this=>window'
     }]
   },
   plugins: [

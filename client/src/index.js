@@ -4,13 +4,13 @@ import App from './App';
 import './index.css';
 import '../semantic/dist/semantic.min.css';
 
-import Admin from './Admin'
-import Home from './Home'
+import Admin from './components/admin';
+import Home from './components/home';
 
 
 import NotFound from './NotFound'
 
-import { BrowserRouter, Route, IndexRoute, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 ReactDOM.render((
     <BrowserRouter>
