@@ -1,6 +1,6 @@
 
 import React, {Component}  from 'react';
-import Client from '../../Client';
+import Client from '../../clients/Drink';
 import Drink from './drink';
 
 const defaultDrink = { 

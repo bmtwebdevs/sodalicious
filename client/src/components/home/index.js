@@ -1,6 +1,8 @@
-import Hero from './components/hero';
-import DrinkSelector from './components/drinkSelector';
-import Footer from './components/footer';
+import React, { Component } from 'react';
+
+import Hero from '../hero';
+import DrinkSelector from '../drinkSelector';
+import Footer from '../footer';
 
 import 'bootstrap/dist/css/bootstrap.css'
 

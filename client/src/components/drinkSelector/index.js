@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Drink from '../drink';
 import DrinkClient from '../../clients/Drink' ;
 
 import './style.css';
@@ -105,6 +104,7 @@ class DrinkSelector extends Component {
           sizeQ = 'small ';
           break;
           case 200:
+          default:
           sizeQ = 'regular ';
           break;
           case 300:

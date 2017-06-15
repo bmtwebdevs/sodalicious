@@ -2,12 +2,6 @@
 import React, {Component}  from 'react';
 import Ingredient from './ingredient';
 
-const defaultIngredient = {
-    _id: '',
-    name : '',
-    amount : ''
-  };
-
 class Drink extends Component {
 
   render = () => {
