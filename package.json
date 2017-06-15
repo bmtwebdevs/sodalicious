@@ -1,5 +1,5 @@
 {
-  "name": "sodalicious",
+  "name": "sodalicious-server",
   "version": "1.0.0",
   "description": "Control robot drink mixer",
   "main": "index.js",

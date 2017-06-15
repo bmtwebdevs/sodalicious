@@ -1,5 +1,5 @@
 {
-  "name": "lookup-client",
+  "name": "sodalicious-client",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
@@ -21,7 +21,7 @@
     "jquery": "3.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
