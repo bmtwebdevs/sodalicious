@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 function search(query, cb) {
-  return fetch(`drinks?q=${query}`, {
+  return fetch(`/api/drinks?q=${query}`, {
     accept: 'application/json',
   }).then(checkStatus)
     .then(parseJSON)
@@ -10,7 +10,7 @@ function search(query, cb) {
 
 function remove(id, cb) {
 
-  return fetch('drink', {
+  return fetch('/api/drink', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ function remove(id, cb) {
 
 function upsert(drink, cb) {
 
-  return fetch('drink', {
+  return fetch('/api/drink', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
