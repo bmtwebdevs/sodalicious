@@ -11,7 +11,6 @@ class Home extends Component {
   render() {
     return (
       <div className='Home'>
-        <Hero/>
         <DrinkSelector/>
         <div className='ui text container'>
         </div>
