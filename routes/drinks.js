@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 // Exports
 module.exports = (app, Drink) => {
   
-  app.get('/drinks', function(req, res) {
+  app.get('/api/drinks', function(req, res) {
 
     var query = {};
     
@@ -20,7 +20,7 @@ module.exports = (app, Drink) => {
     });
   });
 
-  app.delete('/drink', function(req, res) {
+  app.delete('/api/drink', function(req, res) {
     Drink.findOneAndRemove({_id: req.body.id}, function(err, drink) {
       if(err) {
         return res.json({success:false, error: err});
@@ -31,7 +31,7 @@ module.exports = (app, Drink) => {
     });
   });
 
-  app.post('/drink', function(req, res) {
+  app.post('/api/drink', function(req, res) {
     var reqDrink = req.body.drink;
     
     var newDrink = { 
