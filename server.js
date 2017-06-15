@@ -15,6 +15,9 @@ var db = mongoose.createConnection('localhost', 'sodalicious');
 var drinkSchema = require('./models/Drink.js').DrinkSchema;
 var Drink = db.model('drinks', drinkSchema);
 
+var pumpSchema = require('./models/Pump.js').PumpSchema;
+var Pump = db.model('pumps', pumpSchema);
+
 const app = express();
 
 app.set('port', (process.env.SERVER_PORT || 3001));
@@ -32,7 +35,7 @@ app.use(bodyParser.json());
 // Routes
 drinkRoutes(app, Drink);
 
-pumpRoutes(app, Bartender);
+pumpRoutes(app, Pump, Bartender);
 
 bartenderRoutes(app, Bartender, Drink);
 

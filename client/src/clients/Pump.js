@@ -1,5 +1,19 @@
 /* eslint-disable no-undef */
 
+function upsert(pump, cb) {
+
+  return fetch('/api/pump/', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify({ pump })
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+}
+
 function on(pump, cb) {
   
     return fetch('/api/pump/on', {
@@ -49,6 +63,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Pump = { on, off };
+const Pump = { upsert, on, off };
 
 export default Pump;
