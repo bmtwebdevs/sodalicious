@@ -21,7 +21,7 @@ npm start
 To start both the client and the server.  If you don't have Arduino connected then run:
 
 ```
-set BAR=false
+set BAR=NO
 npm start
 ```
 
