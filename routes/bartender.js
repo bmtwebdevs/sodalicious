@@ -2,6 +2,10 @@
 
 var express = require('express');
 
+var Twitter = require("twitter");
+
+var Slack = require("slack");
+
 // Exports
 module.exports = (app, Bartender, Drink) => {
   
@@ -69,7 +73,33 @@ module.exports = (app, Bartender, Drink) => {
         }
 
         if (ingredients.length > 0) {
-            Bartender.pump(ingredients)
+            console.log('Tweeting...');
+
+            var message = 'One ' + drink.name + ' coming up! #sodalicious #letsgetcrunk';
+
+            var client = new Twitter({
+                consumer_key: 'j8TQmYNsYMc33edQawVa9qAgs',
+                consumer_secret: '33RhfAIFT1Joq4kclblHoQRmt6wAMTVHu8NeJi3bcAXwB26xwy',
+                access_token_key: '6310552-HpuUN0d0BOqYm5aYFJijFKURjAIq9fBXc4WPLNeQfM',
+                access_token_secret: 'hkc5d5D8BmVApNz7yG5wg6GIe9FQvxPqprISDRYS3s4YL'
+            });
+
+            client.post('statuses/update', {
+                status: message
+            },
+            function(error, tweet, response) {
+                //console.log(tweet);
+            });
+
+            Slack.chat.postMessage({
+                token: 'xoxb-199105370567-TBxXKBiDxdAZd0LISfxnEtVr',
+                channel: 'C5T01FBMM', 
+                text: message
+            }, (err, data) => { console.log('Slack: ' + err); })
+
+            console.log('...done');
+
+            Bartender.pump(ingredients);
         }
 
         return res.json({success:true});

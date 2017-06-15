@@ -27,7 +27,9 @@
     "colors": "1.1.2",
     "express": "4.13.3",
     "johnny-five": "^0.11.1",
-    "mongoose": "^4.10.5"
+    "mongoose": "^4.10.5",
+    "twitter":"1.7.1",
+    "slack":"8.3.1"
   },
   "devDependencies": {
     "concurrently": "3.1.0",

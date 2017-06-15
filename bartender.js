@@ -1,4 +1,4 @@
-var pump0, pump1, pump2, pump3, pump4;
+var pump0, pump1, pump2, pump3, pump4, awake = false;
 
 var five = require('johnny-five');
 
@@ -17,6 +17,8 @@ try {
       pump4 = new five.Led(7);
 
       console.log('Bartender Ready'.green);
+
+      awake = true;
   });
 
   board.on("fail", function(event) {
@@ -42,6 +44,10 @@ try {
 
 
 exports.pump = function(ingredients) {
+    if (awake === false) {
+      console.log("Go away, I'm sleeping!");
+      return;
+    }
     console.log('Making drink...'.blue);
 
     for (var i in ingredients) {
