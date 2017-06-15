@@ -19,7 +19,7 @@ module.exports = (app, Drink) => {
     });
   });
 
-  app.del('/drink', function(req, res) {
+  app.delete('/drink', function(req, res) {
     Drink.findOneAndRemove({_id: req.body.id}, function(err, drink) {
       if(err) {
         return res.json({success:false, error: err});
@@ -48,8 +48,7 @@ module.exports = (app, Drink) => {
           console.log("Add Drink");
           return res.json({ drink: drink });
         }
-
-        
     });
+
   });
 };

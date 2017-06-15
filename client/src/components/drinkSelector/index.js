@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Drink from '../drink';
-import Client from '../../clients/Client';
+import DrinkClient from '../../clients/Drink' ;
 
 import './style.css';
 
@@ -12,7 +12,7 @@ class DrinkSelector extends Component {
   }
 
   componentDidMount() {
-    Client.search('', (drinks) => {
+    DrinkClient.search('', (drinks) => {
         this.setState({
           drinks: drinks
         });
@@ -26,7 +26,7 @@ class DrinkSelector extends Component {
       searchValue: value,
     });
     
-    Client.search(value, (drinks) => {
+    DrinkClient.search(value, (drinks) => {
         this.setState({
           drinks: drinks
         });

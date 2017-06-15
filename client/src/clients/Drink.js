@@ -6,7 +6,24 @@ function search(query, cb) {
   }).then(checkStatus)
     .then(parseJSON)
     .then(cb);
-}
+};
+
+function remove(id, cb) {
+  
+  return fetch('drink', {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        method: 'delete',
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -23,6 +40,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { search };
+const Client = { search, remove };
 
 export default Client;

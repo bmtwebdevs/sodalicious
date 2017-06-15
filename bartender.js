@@ -60,6 +60,8 @@ function pumpMilliseconds(pump, time) {
 }
 
 exports.startPump = function (pump) {
+  console.log(new Date())
+
   console.log(("Starting " + pump).blue);
 
   var p = exports.usePump(pump);
@@ -67,6 +69,8 @@ exports.startPump = function (pump) {
 };
 
 exports.stopPump = function (pump) {
+  console.log(new Date())
+  
   console.log(("Stopping " + pump).blue);
 
   var p = exports.usePump(pump);
