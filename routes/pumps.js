@@ -1,6 +1,7 @@
 'use strict'
 
 var express = require('express');
+var mongoose = require('mongoose');
 
 // Exports
 module.exports = (app, Pump, Bartender) => { 
@@ -10,6 +11,7 @@ module.exports = (app, Pump, Bartender) => {
 
     var newPump = { 
       name: reqPump.name, 
+      displayName: reqPump.displayName,
       ingredientName: reqPump.ingredientName
     };
 
