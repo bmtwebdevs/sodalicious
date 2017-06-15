@@ -2,7 +2,7 @@
 
 function on(pump, cb) {
   
-    return fetch('pump/on', {
+    return fetch('/api/pump/on', {
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -19,7 +19,7 @@ function on(pump, cb) {
 
 function off(pump, cb) {
   
-    return fetch('pump/off', {
+    return fetch('/api/pump/off', {
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
