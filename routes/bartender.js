@@ -73,15 +73,18 @@ module.exports = (app, Bartender, Drink) => {
         }
 
         if (ingredients.length > 0) {
-            console.log('Tweeting...');
+
+            if (process.env.SOCIAL==='YES') {
+
+            console.log('Tweeting/slacking...');
 
             var message = 'One ' + drink.name + ' coming up! #sodalicious #letsgetcrunk';
 
             var client = new Twitter({
-                consumer_key: 'j8TQmYNsYMc33edQawVa9qAgs',
-                consumer_secret: '33RhfAIFT1Joq4kclblHoQRmt6wAMTVHu8NeJi3bcAXwB26xwy',
-                access_token_key: '6310552-HpuUN0d0BOqYm5aYFJijFKURjAIq9fBXc4WPLNeQfM',
-                access_token_secret: 'hkc5d5D8BmVApNz7yG5wg6GIe9FQvxPqprISDRYS3s4YL'
+                consumer_key: process.env.CONSUMER_KEY,
+                consumer_secret: process.env.CONSUMER_SECRET,
+                access_token_key: process.env.ACCESS_KEY,
+                access_token_secret: process.env.ACCESS_SECRET
             });
 
             client.post('statuses/update', {
@@ -92,12 +95,13 @@ module.exports = (app, Bartender, Drink) => {
             });
 
             Slack.chat.postMessage({
-                token: 'xoxb-199105370567-TBxXKBiDxdAZd0LISfxnEtVr',
+                token: process.env.SLACK_TOKEN,
                 channel: 'C5T01FBMM', 
                 text: message
             }, (err, data) => { console.log('Slack: ' + err); })
 
             console.log('...done');
+            }
 
             Bartender.pump(ingredients);
         }
