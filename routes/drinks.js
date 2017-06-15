@@ -1,6 +1,7 @@
 'use strict'
 
 var express = require('express');
+var mongoose = require('mongoose');
 
 // Exports
 module.exports = (app, Drink) => {
@@ -31,12 +32,29 @@ module.exports = (app, Drink) => {
   });
 
   app.post('/drink', function(req, res) {
-    //var drink = new Drink(req.body);
-    var drink = { name: req.body.name, description: req.body.description, ingredients: req.body.ingredients, image: req.body.image };
-    // update the drink if the name is in the db
-    var query = { name: drink.name };
+    var reqDrink = req.body.drink;
     
-    Drink.findOneAndUpdate(query, drink, {upsert:true}, function(err, drink) {
+    var newDrink = { 
+      name: reqDrink.name, 
+      description: reqDrink.description,
+      image: reqDrink.image,
+      ingredients: []
+    };
+    
+    for(var i = 0; i < reqDrink.ingredients.length; i++){
+      newDrink.ingredients.push({
+        name: reqDrink.ingredients[i].name,
+        amount: reqDrink.ingredients[i].amount
+      });
+    }
+    
+    // update the drink if the name is in the db
+    var query = { _id: reqDrink._id };
+    if (!query._id) {
+      query._id = new mongoose.mongo.ObjectID();
+    }
+    
+    Drink.findOneAndUpdate(query, newDrink, {upsert:true, new : true}, function(err, drink) {
         if (drink) {
           console.log("Update Drink");
           return res.json({ drink: drink });

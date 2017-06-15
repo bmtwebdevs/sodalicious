@@ -8,7 +8,7 @@ const getKey = () => {
 }
 
 const defaultDrink = { 
-  _id : getKey(),
+  _id : undefined,
   name : '', 
   description : '', 
   image : '', 
@@ -27,6 +27,10 @@ class Admin extends Component {
   };
 
   componentWillMount = () => {
+    this.updateDrinks();
+  }
+  
+  updateDrinks = (response) => {    
     Client.search('', this.drinksFetched);
   }
 
@@ -35,6 +39,12 @@ class Admin extends Component {
       drinks,
       selectedDrink : Object.assign({}, defaultDrink)
     });
+  }
+
+  saveDrink = (e) => {
+    var drink = Object.assign({}, this.state.selectedDrink);
+    Client.upsert(drink, this.updateDrinks);
+    e.preventDefault();
   }
 
   selectDrink = (e) => {
@@ -69,13 +79,6 @@ class Admin extends Component {
       }
       return { selectedDrink : drink };
     });  
-  }
-
-  saveDrink = (e) => {
-    this.setState((prevState, props) => {
-      console.info(prevState.selectedDrink);
-    });
-    e.preventDefault();
   }
 
   addIngredient = (e) => {
