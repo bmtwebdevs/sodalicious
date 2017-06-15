@@ -8,10 +8,28 @@ var Slack = require("slack");
 
 // Exports
 module.exports = (app, Bartender, Drink) => {
+  app.get('/barmake', function(req, res) {
+    var d = req.query.drink;
+    var size = req.query.size || 10;
+    Drink.findOne({name: d}, function(err, drink) {
+        if(err) {
+            return res.json({success:false, error: err});
+        } else {
+            makeDrink(drink._id, size, res);
+        }
+    });
+  });
   
   app.get('/bartender', function(req, res) {
+      var id = req.query.id;
+      var size = req.query.size || 10;
 
-    Drink.findOne({_id: req.query.id}, function(err, drink) {
+      makeDrink(id, size, res);
+  });
+
+  function makeDrink(id, size, res) {
+
+    Drink.findOne({_id: id}, function(err, drink) {
 
       if(err) {
         return res.json({success:false, error: err});
@@ -40,7 +58,7 @@ module.exports = (app, Bartender, Drink) => {
             }
         }
 
-        var size = req.query.size || 10;
+        //var size = req.query.size || 10;
         
         for (var ingredient of drink.ingredients) {
             //console.log('IN:')
@@ -111,6 +129,6 @@ module.exports = (app, Bartender, Drink) => {
       
     });
     
-  });
+  }
 
 };
