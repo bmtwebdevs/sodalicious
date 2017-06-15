@@ -47,6 +47,12 @@ class Admin extends Component {
     e.preventDefault();
   }
 
+  removeDrink = (e) => {
+    var drink = Object.assign({}, this.state.selectedDrink);
+    Client.remove(drink, this.updateDrinks);
+    e.preventDefault();
+  }
+
   selectDrink = (e) => {
     let select = e.target;
     let option = select.selectedOptions[0];
@@ -118,6 +124,7 @@ class Admin extends Component {
           { <Drink 
               {...this.state.selectedDrink} 
               onSave={this.saveDrink} 
+              onRemove={this.removeDrink}
               onDrinkFieldChange={this.changeDrinkField}
               onIngredientFieldChange={this.changeIngredientField}
               onAddIngredient={this.addIngredient} 
