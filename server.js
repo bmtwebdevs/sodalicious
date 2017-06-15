@@ -12,14 +12,12 @@ var bartenderRoutes = require('./routes/bartender');
 
 var db = mongoose.createConnection('localhost', 'sodalicious');
 
-var port = process.env.PORT || 3000;        // set our port
-
 var drinkSchema = require('./models/Drink.js').DrinkSchema;
 var Drink = db.model('drinks', drinkSchema);
 
 const app = express();
 
-app.set('port', (process.env.PORT || 3001));
+app.set('port', (process.env.SERVER_PORT || 3001));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {

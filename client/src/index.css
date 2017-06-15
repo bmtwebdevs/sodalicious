@@ -1,5 +1,8 @@
-body, html {
-    height: 100%;
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
 }
 
 body {
@@ -42,4 +45,23 @@ body {
 
 .buttons {
   text-align: center;
+}
+
+.FooterContainer{
+    text-align: center;
+    padding: 10px;
+    background-color: #eee;
+    border-top: 2px solid #f26d6a;
+}
+.wrapper {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px; 
+}
+.wrapper:after {
+  content: "";
+  display: block;
+}
+.FooterContainer, .wrapper:after {
+  height: 50px; 
 }

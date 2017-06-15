@@ -8,7 +8,8 @@ function search(query, cb) {
     .then(cb);
 };
 
-function remove(id, cb) {
+function remove(drink, cb) {
+  debugger;
 
   return fetch('/api/drink', {
     headers: {
@@ -17,7 +18,7 @@ function remove(id, cb) {
     },
     method: 'delete',
     body: JSON.stringify({
-      id: id
+      id: drink._id
     })
   }).then(checkStatus)
     .then(parseJSON)

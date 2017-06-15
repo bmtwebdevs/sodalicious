@@ -7,6 +7,8 @@ class Drink extends Component {
   render = () => {
     
     let showRemoveButton = this.props.ingredients.length > 1;
+
+    let removeDrinkButton = this.props._id !== undefined ? <button onClick={(e) => this.props.onRemove(e)} >Remove Drink</button> : <span></span>;
     
     return (
       <div className="drink-form-group">
@@ -38,7 +40,7 @@ class Drink extends Component {
                                        onRemoveIngredient={this.props.onRemoveIngredient}
                                        onIngredientFieldChange={this.props.onIngredientFieldChange}/>
                                     ))}
-        <button onClick={(e) => this.props.onSave(e)} >Save</button>
+        <button onClick={(e) => this.props.onSave(e)} >Save Drink</button> {removeDrinkButton}
       </div>    
     )
   }
