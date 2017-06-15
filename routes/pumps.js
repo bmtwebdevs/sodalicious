@@ -5,6 +5,20 @@ var mongoose = require('mongoose');
 
 // Exports
 module.exports = (app, Pump, Bartender) => { 
+  
+  app.get('/api/pump', function(req, res) {
+
+    var query = {};
+    
+    if(req.query.q) {
+      var regex = new RegExp(req.query.q, 'i');
+      query = { name: regex };
+    }
+    
+    Pump.find(query).sort({name: 'asc'}).exec(function (err, pumps) {
+      return res.json(pumps);
+    });
+  });
 
   app.post('/api/pump', function(req, res) {
     var reqPump = req.body.pump;

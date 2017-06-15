@@ -1,5 +1,13 @@
 /* eslint-disable no-undef */
 
+function search(query, cb) {
+  return fetch(`/api/pump?q=${query}`, {
+    accept: 'application/json',
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
+
 function upsert(pump, cb) {
 
   return fetch('/api/pump/', {
