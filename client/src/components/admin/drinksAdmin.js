@@ -35,9 +35,15 @@ class Admin extends Component {
   }
 
   drinksFetched = (drinks) => {
+    let filteredDrinks = drinks.filter(drink => drink.name === this.state.selectedDrink.name);
+    let selectedDrink = Object.assign({}, defaultDrink);
+    if(filteredDrinks.length > 0){
+      selectedDrink = filteredDrinks[0];
+    }
+    
     this.setState({
       drinks,
-      selectedDrink : Object.assign({}, defaultDrink)
+      selectedDrink
     });
   }
 
@@ -115,6 +121,7 @@ class Admin extends Component {
             <div className="col-sm-8">
               <select 
                 className="form-control"
+                value={this.state.selectedDrink._id}
                 onChange={this.selectDrink.bind(this)}>
                 <option value="" default>New Drink</option>            
                 {(this.state.drinks.map(drink => <option key={drink._id} value={drink._id}>{drink.name}</option>))}
