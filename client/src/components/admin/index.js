@@ -2,14 +2,18 @@
 import React, {Component}  from 'react';
 import Client from '../../clients/Drink';
 import Drink from './drink';
+  
+const getKey = () => {
+  return Math.random().toString(36).substr(2, 10);
+}
 
 const defaultDrink = { 
-  _id : undefined,
+  _id : getKey(),
   name : '', 
   description : '', 
   image : '', 
   ingredients : [{
-    _id: undefined,
+    _id: getKey(),
     name : '',
     amount : ''
   }] 
@@ -19,7 +23,7 @@ class Admin extends Component {
 
   state = {
     drinks: [],
-    selectedDrink: defaultDrink
+    selectedDrink: Object.assign({}, defaultDrink)
   };
 
   componentWillMount = () => {
@@ -36,14 +40,12 @@ class Admin extends Component {
   selectDrink = (e) => {
     let select = e.target;
     let option = select.selectedOptions[0];
-    let drink = Object.assign({}, defaultDrink);
     let potentialDrinks = this.state.drinks.filter(drink => drink._id === option.value);  
-    if(potentialDrinks.length > 0){
-      drink = potentialDrinks[0];
-    }
+    let drink = potentialDrinks.length > 0 ? potentialDrinks[0] : defaultDrink;
+    
     this.setState({
-      selectedDrink: drink
-    });    
+      selectedDrink: Object.assign({}, drink)
+    });
   }
   
   changeDrinkField = (e, field) => {
@@ -79,7 +81,7 @@ class Admin extends Component {
   addIngredient = (e) => {
     this.setState((prevState, props) => {
       let drink = Object.assign({}, prevState.selectedDrink);
-      drink.ingredients = drink.ingredients.concat([{ _id: Math.random().toString(36).substr(2, 5), name: '', amount: '' }]);
+      drink.ingredients = drink.ingredients.concat([{ _id: getKey(), name: '', amount: '' }]);
       return { selectedDrink: drink };
     });
     e.preventDefault();

@@ -13,19 +13,19 @@ class Drink extends Component {
         <div className="form-group">
           <label className="control-label col-sm-2">Name </label>
           <div className="col-sm-8">
-            <input className="form-control" type="text" defaultValue={this.props.name} />
+            <input className="form-control" type="text" value={this.props.name} onChange={(e) => this.props.onDrinkFieldChange(e, 'name')} />
           </div>
         </div>
         <div className="form-group">
           <label className="control-label col-sm-2">Description </label>
           <div className="col-sm-8">
-            <textarea className="form-control" defaultValue={this.props.description} onBlur={(e) => this.props.onDrinkFieldChange(e, 'description')} />
+            <textarea className="form-control" value={this.props.description} onChange={(e) => this.props.onDrinkFieldChange(e, 'description')} />
           </div>
         </div>
         <div className="form-group">
           <label className="control-label col-sm-2">Image </label>
           <div className="col-sm-8">
-            <input className="form-control" type="text" defaultValue={this.props.image} onBlur={(e) => this.props.onDrinkFieldChange(e, 'image')} />
+            <input className="form-control" type="text" value={this.props.image} onChange={(e) => this.props.onDrinkFieldChange(e, 'image')} />
           </div>
         </div>
         <button onClick={(e) => this.props.onAddIngredient(e)} >Add Ingredient</button>
