@@ -4,6 +4,8 @@ import App from './App';
 import './index.css';
 import '../semantic/dist/semantic.min.css';
 
+import './components/drink/style.css';
+
 import Admin from './components/admin';
 import Home from './components/home';
 

@@ -1,0 +1,35 @@
+.Drink {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background-color: #cccccc;
+    float: left;
+    margin: 0 0 20px 20px;
+    border: 2px solid white;
+}
+
+.Drink .drinkImage {
+    display: inline-block;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.Drink .drinkName {
+    float: left;
+  width: 100%;
+  bottom: 0px;
+  color: #FFFFFF;
+  background-color: rgba(0,0,0,0.3);
+  padding: 10px;
+  font-size: 1em;
+}
+
+.activeDrink {
+    border: 2px solid #f26d6a;
+}
+
+.activeDrink .drinkName {
+    background-color: rgba(255,0,0,0.3) !important;
+}

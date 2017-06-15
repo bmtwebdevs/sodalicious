@@ -1,22 +1,45 @@
 var pump0, pump1, pump2, pump3, pump4;
-/*
+
 var five = require('johnny-five');
 
-console.log("Bartender Waking Up".green);
+try {
+  if (process.env.BAR !== 'NO') {
 
-var board = new five.Board({port:'COM5', repl: false});
+  console.log("Bartender Waking Up".green);
 
-board.on('ready', function() {
-    
-    pump0 = new five.Led(3);
-    pump1 = new five.Led(4);
-    pump2 = new five.Led(5);
-    pump3 = new five.Led(6);
-    pump4 = new five.Led(7);
+  var board = new five.Board({port:'COM5', repl: false});
+  
+  board.on('ready', function() {
+      pump0 = new five.Led(3);
+      pump1 = new five.Led(4);
+      pump2 = new five.Led(5);
+      pump3 = new five.Led(6);
+      pump4 = new five.Led(7);
 
-    console.log('Bartender Ready'.green);
-});
-*/
+      console.log('Bartender Ready'.green);
+  });
+
+  board.on("fail", function(event) {
+    /*
+      Event {
+        type: "info"|"warn"|"fail",
+        timestamp: Time of event in milliseconds,
+        class: name of relevant component class,
+        message: message [+ ...detail]
+      }
+    */
+    console.log("%s sent a 'fail' message: %s", event.class, event.message);
+  });
+
+  board.on('error', function(err) {
+    console.log("Ooops", err);
+    return;
+  });
+  }
+} catch(err) {
+  console.log('Bartender not initialised. Is it plugged in?', err);
+}
+
 
 exports.pump = function(ingredients) {
     console.log('Making drink...'.blue);
@@ -39,6 +62,8 @@ function pumpMilliseconds(pump, time) {
 }
 
 exports.startPump = function (pump) {
+  console.log(new Date())
+
   console.log(("Starting " + pump).blue);
 
   var p = exports.usePump(pump);
@@ -46,6 +71,8 @@ exports.startPump = function (pump) {
 };
 
 exports.stopPump = function (pump) {
+  console.log(new Date())
+  
   console.log(("Stopping " + pump).blue);
 
   var p = exports.usePump(pump);

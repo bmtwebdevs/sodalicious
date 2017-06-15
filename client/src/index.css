@@ -2,12 +2,44 @@ body, html {
     height: 100%;
 }
 
+body {
+  background-color: white !important;
+  min-height: 100%;
+}
+
 .App {
-  text-align: center;
+/*  text-align: center;*/
   height: 100%;
-  background-color: #d9534f;
 }
 
 #food-search {
   margin-top: 5em;
+}
+
+.barInner {
+  text-align: left !important;
+  margin-bottom: 20px !important;
+  width:95%;
+  background-color: rgb(245,245,245);
+  padding: 10px !important;
+  display: inline-block !important;
+  border-bottom: 3px solid #f26d6a;
+  margin-left: 60px !important;
+}
+
+.bar {
+  width: 100%;
+}
+
+.barInner h2 {
+  display: inline-block !important;
+  margin-bottom: 0 !important;
+}
+
+.barInner .search {
+  float:right;
+}
+
+.buttons {
+  text-align: center;
 }

@@ -6,9 +6,8 @@ class Hero extends Component {
     return (
       <div className="Hero">
         <div className="jumbotron">
-          <h1>#Sodalicious</h1>
+          <h1><img src="favicon.ico" style={{height:'100px'}} /> #Sodalicious</h1>
           <p>An Alexa controlled smart drinks mixer for the technogeek-connoisseur powered by <b>British Mixology Technology</b></p>
-          <p><a className="btn btn-danger btn-lg" href="#" role="button">Make a drink</a></p>
         </div>
       </div>
     );

@@ -1,11 +1,38 @@
 /* eslint-disable no-undef */
+
 function search(query, cb) {
   return fetch(`drinks?q=${query}`, {
     accept: 'application/json',
   }).then(checkStatus)
     .then(parseJSON)
     .then(cb);
-}
+};
+
+function remove(id, cb) {
+  
+  return fetch('drink', {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+        method: 'delete',
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    .then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
+
+function make(drink, size, cb) {
+
+return fetch(`bartender?id=${drink}&size=${size}`, {
+    accept: 'application/json',
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+};
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -22,5 +49,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { search };
+const Client = { search, remove, make };
+
 export default Client;
