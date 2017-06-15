@@ -85,14 +85,14 @@ module.exports = (app, Bartender, Drink) => {
             });
 
             client.post('statuses/update', {
-                status: 'One ' + drink.name + ' coming up! #sodalicious'
+                status: message
             },
             function(error, tweet, response) {
                 //console.log(tweet);
             });
 
             Slack.chat.postMessage({
-                token: 'xoxp-51066723040-99640917427-199096583463-000ca8f604256badc54f96f95b208351',
+                token: 'xoxb-199105370567-TBxXKBiDxdAZd0LISfxnEtVr',
                 channel: 'C5T01FBMM', 
                 text: message
             }, (err, data) => { console.log('Slack: ' + err); })
