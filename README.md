@@ -65,9 +65,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Richard Caunt** - for his 3D printer
-* **Jeremy Lintern** - for the name
+* **Jeremy Linter** - for the name
 * **Conrad Jackson** - for his amazeballs node.js
-* **Luke McHale-Jones** - for #failing to ordering pizza
+* **Luke McHale-AndPace** - for #failing to ordering pizza
 
 ## License
 
