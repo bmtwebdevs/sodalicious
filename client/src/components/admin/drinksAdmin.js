@@ -19,7 +19,7 @@ const defaultDrink = {
   }] 
 }
 
-class DrinksAdmin extends Component {
+class Admin extends Component {
 
   state = {
     drinks: [],
@@ -44,6 +44,12 @@ class DrinksAdmin extends Component {
   saveDrink = (e) => {
     var drink = Object.assign({}, this.state.selectedDrink);
     Client.upsert(drink, this.updateDrinks);
+    e.preventDefault();
+  }
+
+  removeDrink = (e) => {
+    var drink = Object.assign({}, this.state.selectedDrink);
+    Client.remove(drink, this.updateDrinks);
     e.preventDefault();
   }
 
@@ -101,7 +107,7 @@ class DrinksAdmin extends Component {
 
   render = () => {
     return (
-      <div className="admin-drink">
+      <div className="addDrink">
         <form className="form form-horizontal">
           <h1>Mod your drink!</h1>
           <div className="form-group">
@@ -118,6 +124,7 @@ class DrinksAdmin extends Component {
           { <Drink 
               {...this.state.selectedDrink} 
               onSave={this.saveDrink} 
+              onRemove={this.removeDrink}
               onDrinkFieldChange={this.changeDrinkField}
               onIngredientFieldChange={this.changeIngredientField}
               onAddIngredient={this.addIngredient} 
@@ -128,4 +135,4 @@ class DrinksAdmin extends Component {
   }
 }
 
-export default DrinksAdmin;
+export default Admin;
