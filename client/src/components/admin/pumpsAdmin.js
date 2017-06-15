@@ -6,6 +6,14 @@ import Pump from './pump';
 
 class PumpsAdmin extends Component {
   
+  seed = [
+    { name : 'pump_0', displayName : 'Pump 1', ingredientName : '' },
+    { name : 'pump_1', displayName : 'Pump 2', ingredientName : '' },
+    { name : 'pump_2', displayName : 'Pump 3', ingredientName : '' },
+    { name : 'pump_3', displayName : 'Pump 4', ingredientName : '' },
+    { name : 'pump_4', displayName : 'Pump 5', ingredientName : '' },
+  ];
+  
   state = {
     pumps: [],
     ingredients: [],
@@ -19,7 +27,18 @@ class PumpsAdmin extends Component {
     PumpClient.search('', this.pumpsFetched);
   }
   
-  pumpsFetched = (pumps) => {    
+  pumpsFetched = (pumps) => {
+    if(pumps.length === 0){
+      for(var i = 0; i < this.seed.length; i++){
+        if(i < this.seed.length - 1){
+          PumpClient.upsert(this.seed[i]);  
+        }else{
+          PumpClient.upsert(this.seed[i], this.updatePumps);    
+        }        
+      }
+      return;
+    }
+    
     DrinkClient.search('', (drinks) => this.dataFetched(pumps, drinks));
   }
 
@@ -41,9 +60,10 @@ class PumpsAdmin extends Component {
     });
   }
 
-  savePump = (e, id) => {
-    let pump = this.state.pumps.filter(pump => pump._id === id);
+  savePump = (e, id, ingredientName) => {
+    let pump = this.state.pumps.filter(pump => pump._id === id)[0];
     pump = Object.assign({}, pump);
+    pump.ingredientName = ingredientName;
     PumpClient.upsert(pump, this.updatePumps);
     e.preventDefault();
   }

@@ -23,7 +23,7 @@ class Pump extends Component {
   }
   
   handlePumpUpdate = (e, id) => {
-    alert(this.state.value);
+    this.props.onPumpUpdate(e, id, this.state.value);
     e.preventDefault();
   }
   
