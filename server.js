@@ -37,7 +37,7 @@ drinkRoutes(app, Drink);
 
 pumpRoutes(app, Pump, Bartender);
 
-bartenderRoutes(app, Bartender, Drink);
+bartenderRoutes(app, Bartender, Drink, Pump);
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
