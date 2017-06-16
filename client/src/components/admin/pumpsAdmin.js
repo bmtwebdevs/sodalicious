@@ -7,11 +7,11 @@ import Pump from './pump';
 class PumpsAdmin extends Component {
   
   seed = [
-    { name : 'pump_0', displayName : 'Pump 1', ingredientName : '' },
-    { name : 'pump_1', displayName : 'Pump 2', ingredientName : '' },
-    { name : 'pump_2', displayName : 'Pump 3', ingredientName : '' },
-    { name : 'pump_3', displayName : 'Pump 4', ingredientName : '' },
-    { name : 'pump_4', displayName : 'Pump 5', ingredientName : '' },
+    { name : 'pump0', displayName : 'Pump 1', ingredientName : '' },
+    { name : 'pump1', displayName : 'Pump 2', ingredientName : '' },
+    { name : 'pump2', displayName : 'Pump 3', ingredientName : '' },
+    { name : 'pump3', displayName : 'Pump 4', ingredientName : '' },
+    { name : 'pump4', displayName : 'Pump 5', ingredientName : '' },
   ];
   
   state = {
