@@ -8,6 +8,12 @@ function search(query, cb) {
     .then(cb);
 };
 
+function clean(time) {
+  return fetch(`/api/pump/clean?time=${time}`, {
+    accept: 'application/json',
+  });
+}
+
 function upsert(pump, cb) {
 
   return fetch('/api/pump/', {

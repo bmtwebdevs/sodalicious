@@ -79,6 +79,10 @@ class PumpsAdmin extends Component {
     e.preventDefault();
   }
 
+  cleanPump = () => {
+    PumpClient.clean(5000);
+  }
+
   render = () => {
     return (
       <div className="edit-pump">
@@ -90,6 +94,7 @@ class PumpsAdmin extends Component {
                                            onIngredientChange={this.onIngredientChange}
                                            onPumpUpdate={this.savePump} />)}
         </form>
+        <button onClick={() => this.cleanPump()}>Clean Pumps</button>
       </div>      
     )
   }
