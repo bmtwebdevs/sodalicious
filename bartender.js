@@ -7,7 +7,17 @@ try {
 
   console.log("Bartender Waking Up".green);
 
-  var board = new five.Board({port:'COM5', repl: false});
+  var boardPort = process.env.BOARD_PORT || 'COM5';
+
+  var board;
+
+  if (boardPort !== undefined && boardPort !== null && boardPort.length > 0)
+  {
+    board = new five.Board({port:boardPort, repl: false});
+  }
+  else {
+    board = new five.Board({repl: false});
+  }
   
   board.on('ready', function() {
       pump0 = new five.Led(3);
@@ -42,6 +52,17 @@ try {
   console.log('Bartender not initialised. Is it plugged in?', err);
 }
 
+exports.clean = function(time) {
+
+  var t = time || 5000;
+
+    setTimeout(function () {      pumpMilliseconds('pump0', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump1', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump2', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump3', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump4', time);    }, 50);
+      
+};
 
 exports.pump = function(ingredients) {
     if (awake === false) {
