@@ -39,8 +39,6 @@ pumpRoutes(app, Pump, Bartender);
 
 bartenderRoutes(app, Bartender, Drink, Pump);
 
-app.use('PATH_URL', express.static(path.join(__dirname, 'public')))
-
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
