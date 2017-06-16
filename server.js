@@ -37,7 +37,7 @@ drinkRoutes(app, Drink);
 
 pumpRoutes(app, Pump, Bartender);
 
-bartenderRoutes(app, Bartender, Drink);
+bartenderRoutes(app, Bartender, Drink, Pump);
 
 app.use('PATH_URL', express.static(path.join(__dirname, 'public')))
 
