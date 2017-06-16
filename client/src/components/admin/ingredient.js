@@ -7,13 +7,13 @@ class Ingredient extends Component {
     
     let button = null;
     if(this.props.showRemoveButton){
-      button = <button onClick={(e) => this.props.onRemoveIngredient(e, this.props._id)} >Remove</button>;
+      button = <button className="btn btn-lg btn-warning" onClick={(e) => this.props.onRemoveIngredient(e, this.props._id)} ><span className="glyphicon glyphicon-trash" aria-hidden="true"></span></button>;
     }else{
       button = <span>&nbsp;</span>
     }
     
     return(
-      <div className="form-group">
+      <div className="form-group form-group-lg">
         <label className="control-label col-sm-2">Name </label>
         <div className="col-sm-3">
           <input className="form-control" type="text" defaultValue={this.props.name} onChange={(e) => this.props.onIngredientFieldChange(e, this.props._id, 'name')} />
