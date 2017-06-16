@@ -30,15 +30,15 @@ class Pump extends Component {
   render(){
         
     return(
-      <div className="form-group">
+      <div className="form-group form-group-lg">
         <label className="control-label col-sm-2">{this.props.displayName}</label>
-        <div className="col-sm-2">
-          <select defaultValue={this.props.ingredientName} onChange={(e) => this.handleIngredientChange(e)}>
+        <div className="col-sm-8">
+          <select className="form-control" defaultValue={this.props.ingredientName} onChange={(e) => this.handleIngredientChange(e)}>
             {(this.props.ingredients.map(ingredient => <option key={ingredient} value={ingredient}>{ingredient}</option>))}
           </select>
         </div>
-        <div className="col-sm-1">
-          <button onClick={(e) => this.handlePumpUpdate(e, this.props._id)} >Update</button>
+        <div className="col-sm-2">
+          <button className="btn btn-lg btn-primary" onClick={(e) => this.handlePumpUpdate(e, this.props._id)} >Update</button>
         </div>
       </div>
     )

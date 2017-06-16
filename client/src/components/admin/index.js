@@ -1,27 +1,31 @@
 import React, {Component}  from 'react';
 import {Link} from 'react-router-dom';
+import './style.css';
 
 class Admin extends Component {
-
+  
   render = () => {
     return (
-      <div>
-        <div className="admin ui two column doubling stackable grid container">
-          <div className="column" style={{"text-align":"right"}}>
-            <Link to="/admin/drinks">
-              <h1>
-                <span className="label label-primary">Drinks</span>
-              </h1>
-            </Link>
-          </div>  
-          <div className="column">
-            <Link to="/admin/pumps">
-              <h1>
-                <span className="label label-success">Pumps</span>
-              </h1>
-            </Link>     
-          </div>   
+      <div className="admin">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-offset-2 col-sm-4 icon-col">
+              <Link className="icon-link" to="/admin/drinks" onMouseEnter={() => this.sortZs('drink')}>
+                <h1>
+                  <span style={{display:'block' }} className="label label-success glyphicon glyphicon-glass icon-lg"></span>
+                </h1>
+              </Link>
+            </div>
+            <div className="col-sm-4 icon-col">
+              <Link className="icon-link" to="/admin/pumps" onMouseEnter={() => this.sortZs('pump')}>
+                <h1>
+                  <span style={{display:'block' }} className="label label-danger glyphicon glyphicon-tint icon-lg"></span>
+                </h1>
+              </Link>     
+            </div>
+          </div>
         </div>
+
       </div>
     )
   }
