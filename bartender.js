@@ -42,6 +42,17 @@ try {
   console.log('Bartender not initialised. Is it plugged in?', err);
 }
 
+exports.clean = function(time) {
+
+  var t = time || 5000;
+
+    setTimeout(function () {      pumpMilliseconds('pump0', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump1', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump2', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump3', time);    }, 50);
+    setTimeout(function () {      pumpMilliseconds('pump4', time);    }, 50);
+      
+};
 
 exports.pump = function(ingredients) {
     if (awake === false) {
