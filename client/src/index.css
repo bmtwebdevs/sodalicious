@@ -20,14 +20,10 @@ body {
 }
 
 .barInner {
-  text-align: left !important;
   margin-bottom: 20px !important;
-  width:95%;
   background-color: rgb(245,245,245);
   padding: 10px !important;
-  display: inline-block !important;
   border-bottom: 3px solid #f26d6a;
-  margin-left: 60px !important;
 }
 
 .bar {
