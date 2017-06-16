@@ -80,7 +80,7 @@ onIngredientChange = (e, id) => {
 }
 
 cleanPump = () => {
-  PumpClient.clean(5000);
+  PumpClient.clean(30000);
 }
 
 render = () => {

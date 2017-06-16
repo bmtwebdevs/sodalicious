@@ -77,6 +77,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Pump = { search, upsert, on, off };
+const Pump = { search, upsert, on, off, clean};
 
 export default Pump;
