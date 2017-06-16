@@ -15,18 +15,17 @@ body {
   height: 100%;
 }
 
-#food-search {
-  margin-top: 5em;
-}
-
-.barInner {
-  margin-bottom: 20px !important;
+.headerRow {
   background-color: rgb(245,245,245);
-  padding: 10px !important;
-  border-bottom: 3px solid #f26d6a;
+  border-bottom: 3px solid #f26d6a !important;
+  padding-top: 10px;
 }
 
-.bar {
+.headerRowCell {
+  margin-bottom: 10px;
+}
+
+.search {
   width: 100%;
 }
 

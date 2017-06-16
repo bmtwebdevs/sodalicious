@@ -114,47 +114,52 @@ class DrinkSelector extends Component {
     }
 
     return (
-      <div>
-        <div className="alert">
-          <div className="barInner">
+      <div className="container">
+        <div className="row headerRow">
+          <div className="col-sm-6 headerRowCell">
             <h2>Choose your drink...</h2>
+          </div>          
+          <div className="col-sm-6  headerRowCell">            
             <div className="ui input focus search">
               <input className='prompt' type='text' placeholder='Search drinks...' value={this.state.searchValue} onChange={this.handleSearchChange} />
             </div>
           </div>
         </div>
-
-        <div className="Drinks">
-          <ul>
-            {listItems}
-          </ul>
-          <div style={{ clear: "both" }} />
-        </div>
-
-        <div id="sizeBar" className="alert" style={{ display: this.state.drink.length > 0 ? 'block' : 'none' }}>
-          <div className="bar">
-            <div className="barInner">
-              <h2>Choose the size...</h2>
-            </div>
+        <br/>
+        <div className="row">
+          <div className="Drinks">
+            <ul>
+              {listItems}
+            </ul>
+            <div style={{ clear: "both" }} />
           </div>
-
+        </div>
+        <br/>
+        <div id="sizeBar" className="row" style={{ display: this.state.drink.length > 0 ? 'block' : 'none' }}>
+          <div className="row headerRow">
+          <div className="col-sm-12 headerRowCell">
+            <h2>Choose the size...</h2>
+          </div>          
+        </div>
+        <br/>
+        <div className="row">
           <div className="buttons">
             <button onClick={() => this.pickSize(20)} className={this.state.size === 20 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="20">Shot</button>&nbsp;
-          <button onClick={() => this.pickSize(100)} className={this.state.size === 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">Small</button>&nbsp;
-          <button onClick={() => this.pickSize(200)} className={this.state.size === 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">Medium</button>&nbsp;
-          <button onClick={() => this.pickSize(300)} className={this.state.size === 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">Large</button>
+            <button onClick={() => this.pickSize(100)} className={this.state.size === 100 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="100">Small</button>&nbsp;
+            <button onClick={() => this.pickSize(200)} className={this.state.size === 200 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="200">Medium</button>&nbsp;
+            <button onClick={() => this.pickSize(300)} className={this.state.size === 300 ? 'btn btn-lg btn-primary' : 'btn btn-lg btn-default'} id="300">Large</button>
             <br /><br />
           </div>
         </div>
-
-        <div id="makeBar" style={{ display: this.state.drink.length > 0 && this.state.size > 0 ? 'block' : 'none' }}>
+        <div id="makeBar" className="row" style={{ display: this.state.drink.length > 0 && this.state.size > 0 ? 'block' : 'none' }}>
           <div className="buttons">
-            <br />
-            <h1><i>{message}</i></h1>
-            <br /><br />
-            <button onClick={() => this.makeDrink()} className="btn btn-lg btn-success">Make Drink</button>
-            <br /><br />
-          </div>
+             <br />
+             <h1><i>{message}</i></h1>
+             <br /><br />
+             <button onClick={() => this.makeDrink()} className="btn btn-lg btn-success">Make Drink</button>
+             <br /><br />
+           </div>
+         </div>
         </div>
       </div>
     );
