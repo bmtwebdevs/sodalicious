@@ -7,7 +7,17 @@ try {
 
   console.log("Bartender Waking Up".green);
 
-  var board = new five.Board({port:'COM5', repl: false});
+  var boardPort = process.env.BOARD_PORT || 'COM5';
+
+  var board;
+
+  if (boardPort !== undefined && boardPort !== null && boardPort.length > 0)
+  {
+    board = new five.Board({port:boardPort, repl: false});
+  }
+  else {
+    board = new five.Board({repl: false});
+  }
   
   board.on('ready', function() {
       pump0 = new five.Led(3);
