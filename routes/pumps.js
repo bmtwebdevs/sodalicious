@@ -20,6 +20,13 @@ module.exports = (app, Pump, Bartender) => {
     });
   });
 
+  app.get('/api/pump/clean', function(req, res) {
+
+    var time = req.query.time;
+
+    Bartender.clean(time || 5000);
+  });
+
   app.post('/api/pump', function(req, res) {
     var reqPump = req.body.pump;
 
