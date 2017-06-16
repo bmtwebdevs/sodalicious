@@ -22,11 +22,18 @@ module.exports = (app, Bartender, Drink) => {
         //console.log(drink);
 
         var pumps = [];
-        pumps['pump0'] = 'Vodka';
-        pumps['pump1'] = 'Rum';
-        pumps['pump2'] = 'Sprite';
-        pumps['pump3'] = 'Orange Juice';
-        pumps['pump4'] = 'Gin';
+
+        Pump.find({}).exec(function (err, pumpData) {
+            
+
+            var i = 0;
+            for (var i = 0; i < pumpData.length; i++) {
+                pumps[pumpData[i].name] = pumpData[i].ingredientName;
+            }
+        });
+
+        console.log("Pumps:");
+        console.log(pumps);
         
         var ingredients = [];
 
