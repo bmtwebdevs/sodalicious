@@ -7,7 +7,7 @@ var Twitter = require("twitter");
 var Slack = require("slack");
 
 // Exports
-module.exports = (app, Bartender, Drink) => {
+module.exports = (app, Bartender, Drink, Pump) => {
   
   app.get('/bartender', function(req, res) {
 
@@ -24,13 +24,14 @@ module.exports = (app, Bartender, Drink) => {
         var pumps = [];
 
         Pump.find({}).exec(function (err, pumpData) {
-            
+            console.log('Pump Data');
+            console.log(pumpData)            ;
 
             var i = 0;
             for (var i = 0; i < pumpData.length; i++) {
                 pumps[pumpData[i].name] = pumpData[i].ingredientName;
             }
-        });
+
 
         console.log("Pumps:");
         console.log(pumps);
@@ -114,6 +115,8 @@ module.exports = (app, Bartender, Drink) => {
         }
 
         return res.json({success:true});
+
+        });
       }
       
     });
