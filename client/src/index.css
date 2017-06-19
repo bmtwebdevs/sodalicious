@@ -60,3 +60,8 @@ body {
 .FooterContainer, .wrapper:after {
   height: 50px; 
 }
+
+.invalid-input{
+  color: red !important;
+  border: 1px solid red !important;
+}
