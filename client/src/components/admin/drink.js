@@ -15,19 +15,19 @@ class Drink extends Component {
         <div className="form-group form-group-lg">
           <label className="control-label col-sm-2">Name </label>
           <div className="col-sm-8">
-            <input className="form-control" type="text" value={this.props.name} onChange={(e) => this.props.onDrinkFieldChange(e, 'name')} required maxLength="50" />
+            <input className="form-control" placeholder="E.g. The Verruca Kicker" type="text" value={this.props.name} onChange={(e) => this.props.onDrinkFieldChange(e, 'name')} required maxLength="50" />
           </div>
         </div>
         <div className="form-group form-group-lg">
           <label className="control-label col-sm-2">Description </label>
           <div className="col-sm-8">
-            <textarea className="form-control" value={this.props.description} onChange={(e) => this.props.onDrinkFieldChange(e, 'description')} maxLength="150" />
+            <textarea className="form-control" placeholder="E.g. This stuff will melt your stomach!" value={this.props.description} onChange={(e) => this.props.onDrinkFieldChange(e, 'description')} maxLength="150" />
           </div>
         </div>
         <div className="form-group form-group-lg">
           <label className="control-label col-sm-2">Image </label>
           <div className="col-sm-8">
-            <input className="form-control" type="text" value={this.props.image} pattern=".*\.(png|jpg|gif)" onChange={(e) => this.props.onDrinkFieldChange(e, 'image')} maxLength="30" />
+            <input className="form-control" placeholder="Make it a nice one. Must end in png, jpg or gif." type="text" value={this.props.image} pattern=".*\.(png|jpg|gif)" onChange={(e) => this.props.onDrinkFieldChange(e, 'image')} maxLength="30" />
           </div>
         </div>
         <div className="row">
