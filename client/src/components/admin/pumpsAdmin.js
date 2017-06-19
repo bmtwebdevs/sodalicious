@@ -3,6 +3,7 @@ import React, {Component}  from 'react';
 import PumpClient from '../../clients/Pump';
 import DrinkClient from '../../clients/Drink';
 import Pump from './pump';
+import Hero from '../adminHero';
 
 class PumpsAdmin extends Component {
 
@@ -86,6 +87,7 @@ cleanPump = () => {
 render = () => {
   return (
     <div className="edit-pump">
+    <Hero />
       <div className="container">
         <div className="row">
           <h1>Sort out your pumps! </h1>          
