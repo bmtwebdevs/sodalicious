@@ -48,9 +48,27 @@ drinksFetched = (drinks) => {
 }
 
 saveDrink = (e) => {
-  var drink = Object.assign({}, this.state.selectedDrink);
-  Client.upsert(drink, this.updateDrinks);
-  e.preventDefault();
+  let form = document.getElementById('form-drink');
+  if(this.isFormValid(form)){
+    var drink = Object.assign({}, this.state.selectedDrink);
+    Client.upsert(drink, this.updateDrinks);   
+    e.preventDefault(); 
+  }  
+}
+
+isFormValid = (form) => {
+  let isValid = form.checkValidity();
+
+  for(var i = 0; i < form.length; i++){
+    var input = form[i];
+    if(form[i].checkValidity()){
+      input.className = input.className.replace('invalid-input', '');
+    }else{        
+      form[i].className += ' invalid-input ';        
+    }
+  }
+
+  return isValid;
 }
 
 removeDrink = (e) => {
@@ -115,45 +133,45 @@ render = () => {
   return (
     <div className="addDrink">
 
-      <div className="container">
-        <div className="row">
-          <h1>Make your poison!</h1>          
-        </div>
-      </div>
-      <br />
-      <div className="container">
-        <div className="row">
-          <form className="form form-horizontal">
-            <div className="well">
-              <div className="form-group form-group-lg">
-                <label className="control-label col-sm-2">Choose drink</label>
-                
-                <div className="col-sm-8">
-                  <select 
-                    className="form-control"
-                    value={this.state.selectedDrink._id}
-                    onChange={this.selectDrink.bind(this)}>
-                    <option value="" default>Craft your own</option>            
-                    {(this.state.drinks.map(drink => <option key={drink._id} value={drink._id}>{drink.name}</option>))}
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className="well">
-              { <Drink 
-                  {...this.state.selectedDrink} 
-                  onSave={this.saveDrink} 
-                  onRemove={this.removeDrink}
-                  onDrinkFieldChange={this.changeDrinkField}
-                  onIngredientFieldChange={this.changeIngredientField}
-                  onAddIngredient={this.addIngredient} 
-                  onRemoveIngredient={this.removeIngredient} /> }
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>    
-  )
+    <div className="container">
+    <div className="row">
+    <h1>Make your poison!</h1>          
+    </div>
+    </div>
+    <br />
+    <div className="container">
+    <div className="row">
+    <form id="form-drink" className="form form-horizontal">
+    <div className="well">
+    <div className="form-group form-group-lg">
+    <label className="control-label col-sm-2">Choose drink</label>
+
+    <div className="col-sm-8">
+    <select 
+    className="form-control"
+    value={this.state.selectedDrink._id}
+    onChange={this.selectDrink.bind(this)}>
+    <option value="" default>Craft your own</option>            
+{(this.state.drinks.map(drink => <option key={drink._id} value={drink._id}>{drink.name}</option>))}
+</select>
+</div>
+</div>
+</div>
+<div className="well">
+{ <Drink 
+{...this.state.selectedDrink} 
+onSave={this.saveDrink} 
+onRemove={this.removeDrink}
+onDrinkFieldChange={this.changeDrinkField}
+onIngredientFieldChange={this.changeIngredientField}
+onAddIngredient={this.addIngredient} 
+onRemoveIngredient={this.removeIngredient} /> }
+</div>
+</form>
+</div>
+</div>
+</div>    
+)
 }
 }
 
