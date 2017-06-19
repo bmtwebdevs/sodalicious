@@ -2,6 +2,7 @@
 import React, {Component}  from 'react';
 import Client from '../../clients/Drink';
 import Drink from './drink';
+import Hero from '../adminHero';
 
 const getKey = () => {
   return Math.random().toString(36).substr(2, 10);
@@ -137,7 +138,7 @@ removeIngredient = (e, id) => {
 render = () => {
   return (
     <div className="addDrink">
-
+      <Hero />
       <div className="container">
         <div className="row">
           <h1>Make your poison!</h1>          
