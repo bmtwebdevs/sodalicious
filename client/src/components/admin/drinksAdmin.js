@@ -56,15 +56,17 @@ saveDrink = (e) => {
   }  
 }
 
-isFormValid = (form) => {
+isFormValid = (form, reset) => {
   let isValid = form.checkValidity();
 
   for(var i = 0; i < form.length; i++){
     var input = form[i];
     if(form[i].checkValidity()){
       input.className = input.className.replace('invalid-input', '');
-    }else{        
-      form[i].className += ' invalid-input ';        
+    }else{
+      if(!reset){
+        form[i].className += ' invalid-input ';        
+      }
     }
   }
 
@@ -85,6 +87,9 @@ selectDrink = (e) => {
 
   this.setState({
     selectedDrink: Object.assign({}, drink)
+  }, () => {
+    let form = document.getElementById('form-drink');    
+    this.isFormValid(form, true);
   });
 }
 
