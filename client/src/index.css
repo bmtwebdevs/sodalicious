@@ -25,12 +25,6 @@ body {
   margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 576px) {
-  .sizeButton {
-    margin-bottom: 5px;
-  }
-}
-
 .search {
   width: 100%;
 }

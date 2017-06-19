@@ -5,3 +5,13 @@
     margin-left: 40px;
 }
 
+.btn-size {
+    height: 10vh;
+    color: #000 !important;
+    font-size: 20pt !important;
+    margin-bottom: 10px !important;
+}
+
+.btn-selected {
+    background-color: #f26d6a !important;
+}

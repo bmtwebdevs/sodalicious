@@ -38,6 +38,15 @@
   margin-top: 8vh;
 }
 
+.btn-make{
+  background-color: #f26d6a;
+  height: 10vh;
+  color: #000 !important;
+  width: 40%;
+  font-size: 20pt !important;
+  margin-top: 10vh;
+}
+
 @media only screen and (max-width: 768px) {
     .header p {
       font-size: 20pt;

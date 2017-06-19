@@ -1,0 +1,13 @@
+.adminHero {
+    text-align: center;
+}
+
+.jumbotron{
+    margin-bottom: 0;
+    min-height: 100%;
+    background-repeat: no-repeat;		
+    background-position: center;		
+    -webkit-background-size: cover;		
+    background-size: 100% 100%;		
+    background-color: #ffcb5c !important;		
+} 
