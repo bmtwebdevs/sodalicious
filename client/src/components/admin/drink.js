@@ -15,7 +15,7 @@ class Drink extends Component {
         <div className="form-group form-group-lg">
           <label className="control-label col-sm-2">Name </label>
           <div className="col-sm-8">
-            <input className="form-control" type="text" value={this.props.name} onChange={(e) => this.props.onDrinkFieldChange(e, 'name')} required maxLength="50" onInvalid="Plz enter on Alphabets" />
+            <input className="form-control" type="text" value={this.props.name} onChange={(e) => this.props.onDrinkFieldChange(e, 'name')} required maxLength="50" />
           </div>
         </div>
         <div className="form-group form-group-lg">
